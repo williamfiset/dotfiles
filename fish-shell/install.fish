@@ -22,3 +22,4 @@ for f in (find functions/*.fish)
   cp $f $new_file
   echo $new_file
 end
+
