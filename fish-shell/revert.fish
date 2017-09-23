@@ -1,5 +1,5 @@
 #!/usr/local/bin/fish
 
-rm -r ~/.config/fish/
-mv ~/.config/fish.bak ~/.config/fish
+set -l DIR ~/.config/fish
+rm -r $DIR 2> /dev/null; and mv "$DIR.bak" $DIR
 

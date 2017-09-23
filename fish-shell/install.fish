@@ -1,9 +1,15 @@
 #!/usr/local/bin/fish
 
+# Fish config directory
 set -l DIR  "$HOME/.config/fish"
 
+mkdir -p $DIR
+
 # Make a backup
-cp -r "$DIR" "$DIR.bak"
+if not cp -r "$DIR" "$DIR.bak"
+  echo "Error occured in backup phase"
+  exit 1
+end
 
 cp config.fish "$DIR/config.fish"
 echo $DIR/config.fish

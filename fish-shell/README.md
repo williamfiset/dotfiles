@@ -1,12 +1,11 @@
-## Fish shell scripts
+## :fish: Fish shell configuration :fish:
 
-To install scripts run:
-```fish
+To install scripts run: 
+```
 fish install.fish
 ```
-
-To revert installation:
-```fish
+In the event you wish to revert all changes run:
+```
 fish revert.fish
 ```
 

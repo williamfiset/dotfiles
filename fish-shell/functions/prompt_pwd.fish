@@ -1,4 +1,5 @@
-function prompt_pwd --description "Print the current working directory, shortened to fit the prompt"
+
+function prompt_pwd --description "Get a shortened prompt path"
     set -q argv[1]
     and switch $argv[1]
         case -h --help

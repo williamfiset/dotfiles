@@ -1,6 +1,11 @@
 
 # Export statments
-set --global --export PATH /usr/local/bin $PATH
+
+# Add Python 3 to PATH
+# set --global --export PATH /Library/Frameworks/Python.framework/Versions/3.5/bin/ $PATH
+
+# MongoDB
+# set --global --export PATH /opt/mongodb/bin $PATH
 
 # Scala
 # set --global --export SCALA_HOME /opt/scala
@@ -19,12 +24,6 @@ set --global --export PATH /usr/local/bin $PATH
 
 # Add . to Java classpath
 set --global --export CLASSPATH . $CLASSPATH
-
-# Add Python 3 to PATH
-# set --global --export PATH /Library/Frameworks/Python.framework/Versions/3.5/bin/ $PATH
-
-# MongoDB
-# set --global --export PATH /opt/mongodb/bin $PATH
 
 # Added current path to $PATH
 set --global --export PATH . $PATH
