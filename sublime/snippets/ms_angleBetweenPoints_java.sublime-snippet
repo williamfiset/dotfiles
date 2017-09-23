@@ -1,0 +1,10 @@
+<snippet>
+	<content>// Find the angle from point A to point B in radians
+static double angleBetweenPoints(Point2D a, Point2D b) {
+  return Math.atan2(b.getY() - a.getY(), b.getX() - a.getX());
+}</content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>ms_angleBetweenPoints</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.java</scope>
+</snippet>

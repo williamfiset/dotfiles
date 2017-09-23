@@ -1,0 +1,16 @@
+<snippet>
+  <content>class Q {
+  private ${1:TYPE} [] ar;
+  private int f, e, sz;
+  public Q(int max_sz) { f = e = 0; ar = new ${1:TYPE}[(sz = max_sz+1)]; }
+  public ${1:TYPE} peek() { return ar[f]; }
+  public boolean isEmpty() { return f == e; }
+  public int size() { return (f &gt; e ? (e + sz - f) : (e - f)); }
+  public void enqueue(${1:TYPE} v) { ar[e] = v; if (++e == sz) e = 0; }
+  public ${1:TYPE} dequeue() {${1:TYPE} v = ar[f]; if (++f == sz) f = 0; return v; }
+}</content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>ms_queue</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <scope>source.java</scope>
+</snippet>

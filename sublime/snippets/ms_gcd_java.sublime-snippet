@@ -1,0 +1,9 @@
+<snippet>
+	<content>static long gcd(long a, long b) {
+  return b == 0 ? (a &lt; 0 ? -a : a) : gcd(b, a % b);
+}</content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>ms_gcd</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.java</scope>
+</snippet>

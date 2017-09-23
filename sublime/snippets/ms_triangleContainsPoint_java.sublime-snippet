@@ -1,0 +1,13 @@
+<snippet>
+	<content>static boolean containsPoint(Point2D a, Point2D b, Point2D c, double x, double y) {
+  double ABC = Math.abs (a.getX()*(b.getY()-c.getY()) + b.getX()*(c.getY()-a.getY()) + c.getX()*(a.getY()-b.getY()));
+  double ABP = Math.abs (a.getX()*(b.getY()-y) + b.getX()*(y-a.getY()) + x*(a.getY()-b.getY()));
+  double APC = Math.abs (a.getX()*(y-c.getY()) + x*(c.getY()-a.getY()) + c.getX()*(a.getY()-y));
+  double PBC = Math.abs (x*(b.getY()-c.getY()) + b.getX()*(c.getY()-y) + c.getX()*(y-b.getY()));
+  return ABP + APC + PBC == ABC;
+}</content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>ms_triangleContainsPoint</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.java</scope>
+</snippet>

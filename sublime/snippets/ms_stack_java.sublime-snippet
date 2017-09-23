@@ -1,0 +1,16 @@
+<snippet>
+  <content>class S {
+  private ${1:TYPE} [] ar;
+  private int pos = 0;
+  public S(int max_sz) { ar = new ${1:TYPE}[max_sz]; }
+  public int size() { return pos; }
+  public boolean isEmpty() { return pos == 0; }
+  public ${1:TYPE} peek() { return ar[pos-1]; }
+  public void push(${1:TYPE} value) { ar[pos++] = value; }
+  public ${1:TYPE} pop() { return ar[--pos]; }
+}</content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>ms_stack</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <scope>source.java</scope>
+</snippet>

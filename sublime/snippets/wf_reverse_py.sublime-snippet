@@ -1,0 +1,18 @@
+<snippet>
+	<content><![CDATA[
+# Does not work for numbers ending in zero!
+# 12345 --> 54321
+# 340  -->  43 
+def reverse(n):
+    d,r = 0,0
+    while n > 0:
+        d = n%10
+        r = r*10 + d
+        n = n // 10
+    return r
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>wf_reverse</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.python</scope>
+</snippet>

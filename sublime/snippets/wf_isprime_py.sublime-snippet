@@ -1,0 +1,19 @@
+<snippet>
+	<content><![CDATA[
+def isprime(n):
+  
+  if n < 2: return False
+  elif n in (2, 3): return True
+  elif n % 2 == 0 or n % 3 == 0: return False
+
+  root = int(n**0.5)+1
+  
+  for f in xrange( 5, root, 6):
+    if n % f == 0 or n % (f+2) == 0:
+      return False
+  
+  return True
+]]></content>
+	<tabTrigger>wf_isprime</tabTrigger>
+	<scope>source.python</scope>
+</snippet>

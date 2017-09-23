@@ -1,0 +1,10 @@
+[
+
+  { "keys": ["ctrl+tab"], "command": "next_view" },
+  { "keys": ["ctrl+shift+tab"], "command": "prev_view" }
+  
+  // Was:  
+  // { "keys": ["ctrl+tab"], "command": "next_view_in_stack" },
+  // { "keys": ["ctrl+shift+tab"], "command": "prev_view_in_stack" },
+
+]

@@ -1,0 +1,380 @@
+# Your snippets
+#
+# Atom snippets allow you to enter a simple prefix in the editor and hit tab to
+# expand the prefix into a larger code block with templated values.
+#
+# You can create a new snippet in this file by typing "snip" and then hitting
+# tab.
+#
+# An example CoffeeScript snippet to expand log to console.log:
+#
+# '.source.coffee':
+#   'Console log':
+#     'prefix': 'log'
+#     'body': 'console.log $1'
+#
+
+############################################################################## 
+#                         C++ CODE SNIPPETS
+##############################################################################
+
+
+'.source.cpp':
+	
+	'trim':
+		'prefix' : 'wf_trim'
+		'body' : """
+#include <locale>
+
+// Trims a string removing whitespace on left and right
+void trim( std::string &s ) {
+  int left = 0, right = s.size()-1, sz = s.size();
+  for (; left != sz && isspace(s[left]); left++) { }
+  for (; right >= 0 && isspace(s[right]); right--) { }
+  s = s.substr(left, right - left + 1 ); // substr returns a copy 
+}
+"""
+
+	'split':
+		'prefix' : 'wf_split'
+		'body' : """
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <vector>
+
+// Split a string with a specified delimeter
+std::vector <std::string> split (const std::string &str, char delim ) {
+  std::vector<std::string> elems;
+  std::stringstream ss(str);
+  std::string item;
+  while (getline(ss, item, delim))
+    if (!item.empty()) // We do not want empty strings
+      elems.push_back(item);
+  return elems;
+}
+"""
+
+############################################################################## 
+#                    PYTHON CODE SNIPPETS
+##############################################################################
+
+'.source.python':
+	
+		'pypy':
+			'prefix': 'wf_pypy'
+			'body': """
+			#!/usr/local/bin/pypy
+			# -*- coding: utf-8 -*-
+			
+			"""
+			
+		'isprime':
+			'prefix': 'wf_isprime'
+			'body': """
+			def isprime(n):
+		
+			  if n < 2: return False
+			  elif n in (2, 3): return True
+			  elif n % 2 == 0 or n % 3 == 0: return False
+		
+			  root = int(n**0.5)+1
+			  
+			  for f in xrange( 5, root, 6):
+			    if n % f == 0 or n % (f+2) == 0:
+			      return False
+			  
+			  return True			
+			
+			"""
+	
+		'isprime_rabin':
+			'prefix': 'wf_isprime_rabin'
+			'body': """
+			import random
+			def isprime(p):
+			    if(p<2): return False
+			    if(p!=2 and p%2==0): return False
+			    s=p-1
+			    while(s%2==0): s>>=1
+			    for _ in xrange(10):
+			        a=random.randrange(p-1)+1
+			        temp=s
+			        mod=pow(a,temp,p)
+			        while(temp!=p-1 and mod!=1 and mod!=p-1):
+			            mod=(mod*mod)%p
+			            temp=temp*2
+			        if(mod!=p-1 and temp%2==0): return False
+			    return True
+			
+			"""
+			
+		'phi':
+			'prefix': 'wf_phi'
+			'body': """
+			from Queue import Queue
+			import random
+			def gcd ( a , b ):
+			    while b != 0: a, b = b, a % b
+			    return -a if a < 0 else a
+		
+			def rabin_miller(p):
+			    if(p<2): return False
+			    if(p!=2 and p%2==0): return False
+			    s=p-1
+			    while(s%2==0): s>>=1
+			    for _ in xrange(10):
+			        a=random.randrange(p-1)+1
+			        temp=s
+			        mod=pow(a,temp,p)
+			        while(temp!=p-1 and mod!=1 and mod!=p-1):
+			            mod=(mod*mod)%p
+			            temp=temp*2
+			        if(mod!=p-1 and temp%2==0): return False
+			    return True
+		
+			def pollard_rho(n):
+			    if(n%2==0): return 2;
+			    x=random.randrange(2,1000000)
+			    c=random.randrange(2,1000000)
+			    y=x
+			    d=1
+			    while(d==1):
+			        x=(x*x+c)%n
+			        y=(y*y+c)%n
+			        y=(y*y+c)%n
+			        d=gcd(x-y,n)
+			        if(d==n): break;
+			    return d;
+		
+			def primeFactorization(n):
+			    if n <= 0: raise ValueError("Fucked up input, n <= 0")
+			    elif n == 1: return []
+			    queue = Queue()
+			    factors=[]
+			    queue.put(n)
+			    while(not queue.empty()):
+			        l=queue.get()
+			        if(rabin_miller(l)):
+			            factors.append(l)
+			            continue
+			        d=pollard_rho(l)
+			        if(d==l):queue.put(l)
+			        else:
+			            queue.put(d)
+			            queue.put(l/d)
+			    return factors
+		
+			def phi(n):
+		
+			    if rabin_miller(n): return n-1
+			    phi = n
+			    for p in set(primeFactorization(n)):
+			        phi -= (phi/p)
+			    return phi
+			
+			"""
+		
+		
+		'seive':
+			'prefix': 'wf_seive'
+			'body': """
+			from math import sqrt
+			# Generates a list of primes up to a limit 
+			def seive(limit):
+			    isPrime = {}; isPrime[1] = False
+			    for i in xrange(2, limit + 1):isPrime[i] = True
+			    checkLimit = int(sqrt(limit)) + 1
+			    for i in xrange(2, checkLimit):
+			        if isPrime[i]:
+			            for factor in xrange(2, limit + 1):
+			                j = i * factor
+			                if (j > limit): break
+			                isPrime[j] = False
+			    primes = []
+			    for i in xrange(1, limit + 1):
+			        if isPrime[i]:primes.append(i)
+			    return primes
+			
+			"""
+		
+		'reverse':
+			'prefix': 'wf_reverse'
+			'body': """
+			# Does not work for numbers ending in zero!
+			# 12345 --> 54321
+			# 340  -->  43 
+			def reverse(n):
+			    d,r = 0,0
+			    while n > 0:
+			        d = n%10
+			        r = r*10 + d
+			        n = n // 10
+			    return r
+			
+			"""
+			
+		'replaceDigitAtIndex':
+			'prefix': 'wf_replaceDigitAtIndex'
+			'body': """
+			# Replace n's digit at index i with digit d (works with any integer i)
+			def replaceDigit( n, i, d ):
+				digitAtIndex = lambda n, i: (n / (10**i)) % 10
+				n -= digitAtIndex(n, i) * (10 ** i)
+				n += (10 ** i) * d 
+				return n
+				
+			"""
+		
+		'GCD':
+			'prefix': 'wf_gcd'
+			'body': """
+			def gcd ( a , b ):
+			    while b != 0: a, b = b, a % b
+			    return -a if a < 0 else a
+			
+			"""
+		
+		'prime_factorization':
+			'prefix' : 'wf_prime_factorization'
+			'body' : """
+			from Queue import Queue
+			import random
+		
+			def gcd ( a , b ):
+			    while b != 0: a, b = b, a % b
+			    return -a if a < 0 else a
+		
+			def isprime(n): return rabin_miller(n)
+		
+			def rabin_miller(p):
+			    if(p<2): return False
+			    if(p!=2 and p%2==0): return False
+			    s=p-1
+			    while(s%2==0): s>>=1
+			    for _ in xrange(10):
+			        a=random.randrange(p-1)+1
+			        temp=s
+			        mod=pow(a,temp,p)
+			        while(temp!=p-1 and mod!=1 and mod!=p-1):
+			            mod=(mod*mod)%p
+			            temp=temp*2
+			        if(mod!=p-1 and temp%2==0): return False
+			    return True
+		
+			def pollard_rho(n):
+			    if(n%2==0): return 2;
+			    x=random.randrange(2,1000000)
+			    c=random.randrange(2,1000000)
+			    y=x
+			    d=1
+			    while(d==1):
+			        x=(x*x+c)%n
+			        y=(y*y+c)%n
+			        y=(y*y+c)%n
+			        d=gcd(x-y,n)
+			        if(d==n): break;
+			    return d;
+		
+			def primeFactorization(n):
+				if n <= 0: raise ValueError("Fucked up input, n <= 0")
+				elif n == 1: return []
+				queue = Queue()
+				factors=[]
+				queue.put(n)
+				while(not queue.empty()):
+					l=queue.get()
+					if(isprime(l)):
+						factors.append(l)
+						continue
+					d=pollard_rho(l)
+					if(d==l):queue.put(l)
+					else:
+						queue.put(d)
+						queue.put(l/d)
+				return factors
+			
+			"""
+		
+		'isPalindrome' :
+			'prefix' : 'wf_isPalindrome'
+			'body' : """
+			def isPalindrome ( aStr ) :
+				if type(aStr) is not str: aStr = str(aStr)
+				length = len(aStr)
+				halfLen = length / 2
+				for index in xrange(0, halfLen) :
+					start = aStr[index]
+					end = aStr[length - index - 1]
+					if start != end:
+						return False
+				return True
+			"""
+			
+
+		
+		'genPythagoreanTriple':
+			'prefix': 'wf_genPythagoreanTriple'
+			'body': """
+			from math import sqrt, floor
+			def gcd ( a , b ):
+			    while b != 0: a, b = b, a % b
+			    return -a if a < 0 else a
+			# Generates pythagorean triples up to and NOT including max_perimeter
+			def genPythagoreanTriple(max_perimeter):
+				for m in xrange(2, int(floor(sqrt(max_perimeter)))+1):
+					for n in xrange(1, m):
+						m_2 = m*m; n_2 = n*n
+						a = m_2 - n_2; b = 2*m*n; c = m_2 + n_2; abc = a+b+c
+						if abc > max_perimeter: break
+						if gcd(a,b) != 1: continue
+						if gcd(a,c) != 1: continue
+						if gcd(b,c) != 1: continue
+						yield (a, b, c); k = 2
+						while True:
+							A = a * k; B = b * k; C = c * k; ABC = A+B+C
+							if ABC > max_perimeter: break
+							yield (A, B, C); k += 1
+			
+			"""
+			
+			'wf_factor':
+				'prefix': 'wf_factor'
+				'body': """
+				# Returns the factors of a given number, unsorted.
+				def factors(n):
+					l = [1]
+					for f in xrange(2, int(n**0.5)+1):
+						if n % f == 0:
+							c = n / f
+							if c is not f:
+								l.append(f)
+								l.append(c)
+							else:
+								l.append(f)
+					return l
+				"""
+				
+############################################################################## 
+#                    Java CODE SNIPPETS
+##############################################################################
+
+# '.source.java':
+# 		'Snippet_name':
+# 			'prefix': 'ms_snippetname'
+# 			'body': """
+# """
+
+
+
+
+
+
+
+
+
+
+
+
+
+			

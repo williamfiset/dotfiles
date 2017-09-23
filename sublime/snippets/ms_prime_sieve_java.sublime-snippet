@@ -1,0 +1,33 @@
+<snippet>
+    <content>
+// Gets all primes up to, but not including limit (returned as a list of primes)
+static int[] sieve(int limit) {
+
+  if (limit &lt;= 2) return new int[0];
+  final int numPrimes = (int)(1.25506 * limit / Math.log((double) limit));
+  int[] primes = new int[numPrimes];
+  int index = 0;
+
+  boolean[] isComposite = new boolean[limit];
+  final int sqrtLimit = (int) Math.sqrt(limit);
+  for (int i = 2; i &lt;= sqrtLimit; i++) {
+    if (!isComposite[i]) {
+      primes[index++] = i;
+      for (int j = i * i; j &lt; limit; j += i)
+        isComposite[j] = true;
+    }
+  }
+  
+  for (int i = sqrtLimit + 1; i &lt; limit; i++)
+    if (!isComposite[i])
+      primes[index++] = i;
+
+  return java.util.Arrays.copyOf(primes, index);
+}
+
+</content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>ms_prime_sieve</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.java</scope>
+</snippet>

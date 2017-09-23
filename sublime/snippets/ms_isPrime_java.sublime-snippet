@@ -1,0 +1,18 @@
+<snippet>
+	<content>static boolean isPrime(final long n) {
+
+	if (n &lt; 2) return false;
+	if (n == 2 || n == 3) return true;
+	if (n % 2 == 0 || n % 3 == 0) return false;
+	long limit = (long) Math.sqrt(n);
+	for (long i = 5; i &lt;= limit; i += 6)
+		if (n % i == 0 || n % (i + 2) == 0)
+			return false;
+	return true;
+	
+}</content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>ms_isPrime</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.java</scope>
+</snippet>

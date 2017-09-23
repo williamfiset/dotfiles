@@ -1,0 +1,44 @@
+<snippet>
+	<content>// Remove all bridges
+boolean removed = true;
+while (removed) {
+    removed = false;
+    for (int i = 0; i &lt; n; i++)
+        for (int j = 0; j &lt; n; j++)
+            if (arr[i][j] &amp;&amp; isBridge(arr, j, i, new boolean[n])) {
+                arr[i][j] = false;
+                removed = true;
+            }
+}
+
+// Find largest connected component
+int max = 0;
+boolean[] visited = new boolean[n];
+for (int i = 0; i &lt; n; i++)
+    if (!visited[i])  {
+        int size = findSize(arr, i, visited);
+        max = Math.max(max, size);
+    }
+
+static int findSize(boolean[][] arr, int cur, boolean[] visited) {
+    int total = 0;
+    visited[cur] = true;
+    for (int i = 0; i &lt; arr.length; i++)
+        if (!visited[i] &amp;&amp; arr[cur][i]) total += findSize(arr, i, visited);
+    return total + 1;
+}
+static boolean isBridge(boolean[][] arr, int cur, int target, boolean[] visited) {
+    if (cur == target) return false;
+    visited[cur] = true;
+    for (int i = 0; i &lt; arr.length; i++)
+        if (!visited[i] &amp;&amp; arr[cur][i]) {
+            boolean result = isBridge(arr, i, target, visited);
+            if (!result) return false;
+        }
+    return true;
+}</content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>ms_stronglyConnectedComponenets</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.java</scope>
+</snippet>

@@ -1,0 +1,93 @@
+<snippet>
+	<content>
+class Edge {
+  int from, to, weight;
+  public Edge(int from, int to, int weight) {
+    this.from = from;
+    this.to = to;
+    this.weight = weight;
+  }
+}
+
+// edges - The adjacency list
+// n - the number of nodes
+// s - the source node index 
+static Double[] bellman_ford(HashMap &lt; Integer, List&lt;Edge&gt;&gt; edges, int n, int s) {
+
+  Double[] dist = new Double[n];
+  Arrays.fill(dist, Double.POSITIVE_INFINITY);
+  dist[s] = 0.0;
+
+  // int[] prev = new int[n]; // Tracks best parent nodes
+  // Arrays.fill(prev, -1);
+
+  for (int i = 0; i &lt; n - 1; i++) {
+    for (int from = 0; from &lt; n; from++) {
+      List&lt;Edge&gt; edgeList = edges.get(from);
+      if (edgeList != null && dist[from] != Double.POSITIVE_INFINITY) {
+        for (int j = 0; j &lt; edgeList.size(); j++) {
+          Edge edge = edgeList.get(j);
+          int weight = edge.weight;
+          int to = edge.to;
+          if (dist[to] == Double.POSITIVE_INFINITY) {
+            dist[to] = weight + dist[from];
+          } else if (weight + dist[from] &lt; dist[to]) {
+            dist[to] = weight + dist[from];
+            // prev[to] = from; // Track best parent
+          }
+        }
+      }
+    }
+  }
+
+  // Re-run bellman ford identifying negative cycles
+  for (int from = 0; from &lt; n; from++) {
+    List&lt;Edge&gt; edgeList = edges.get(from);
+    if (edgeList != null && dist[from] != Double.POSITIVE_INFINITY) {
+      for (int j = 0; j &lt; edgeList.size(); j++) {
+        Edge edge = edgeList.get(j);
+        int weight = edge.weight;
+        int to = edge.to;
+        if (weight + dist[from] &lt; dist[to]) {
+
+          dist[to] = Double.NEGATIVE_INFINITY;
+          // prev[to] = from; // Track best parent 
+
+          // We found a negative cycle so try to spread the 
+          // negativeness everywhere, like a disease using BFS!
+          boolean[] visited = new boolean[n];
+          Queue&lt;Integer&gt; q = new LinkedList &lt; &gt; ();
+          q.offer(from);
+          while (!q.isEmpty()) {
+            int _from = q.poll();
+            List&lt;Edge&gt; _edges = edges.get(_from);
+            if (_edges != null) {
+              for (Edge _edge: _edges) {
+                int _to = _edge.to;
+                if (!visited[_to]) {
+                  q.offer(_to);
+                  visited[_to] = true;
+                  if (dist[_from] == Double.NEGATIVE_INFINITY) {
+                    dist[_to] = Double.NEGATIVE_INFINITY;
+                  }
+                }
+              }
+            }
+          }
+
+        }
+      }
+    }
+  }
+
+  // or return 'prev' if you need that
+  return dist;
+
+}
+
+</content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>ms_bellman_ford</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.java</scope>
+</snippet>

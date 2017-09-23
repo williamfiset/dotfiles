@@ -1,0 +1,37 @@
+<snippet>
+	<content>// Using adjacency matrix
+static int dijkstra(Integer[][] weights, int n, int start, int end) {
+    int[] dist = new int[n];
+    Arrays.fill(dist, INFINITY);
+    dist[start] = 0;
+    PriorityQueue&lt;Node&gt; q = new PriorityQueue&lt;Node&gt;();
+    q.offer(new Node(start, 0));
+    while (q.size() &gt; 0) {
+        Node node = q.poll();
+        if (dist[node.index] &lt; node.dist) continue; // Check to see if its stale
+        if (node.index == end) return node.dist; // Reached destination
+        for (int i = 0; i &lt; n; i++)
+            if (weights[node.index][i] != null) {
+                int newDist = dist[node.index] + weights[node.index][i];
+                if (newDist &lt; dist[i]) {
+                    dist[i] = newDist;
+                    q.offer(new Node(i, newDist));
+                }
+            }
+    }
+    return -1; // Does not connect
+}
+class Node implements Comparable&lt;Node&gt; {
+    int index, dist;
+    public Node(int index, int dist) {
+        this.index = index; this.dist = dist;
+    }
+    @Override public int compareTo(Node other) {
+        return ((Integer) dist).compareTo(other.dist);
+    } 
+}</content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>ms_dijkstraPriorityQueue</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.java</scope>
+</snippet>

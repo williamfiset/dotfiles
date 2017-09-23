@@ -1,0 +1,18 @@
+<snippet>
+	<content><![CDATA[
+func isPalindrome(str *string) bool {
+
+	if str != nil {
+		length := len(*str)
+		for i := 0; i < length/2; i++ {
+			if (*str)[i] != (*str)[length-i-1] {
+				return false
+			}
+		}
+	}
+	return true
+}
+]]></content>
+	<tabTrigger>wf_ispalindrome</tabTrigger>
+	<scope>source.go</scope>
+</snippet>

@@ -1,0 +1,25 @@
+<snippet>
+	<content>// Note: Switch to BigInteger if you want to generate more than 67 rows
+static long[][] generatePascalTriangle(int nRows) {
+
+	long[][] arr = new long[nRows][nRows];
+
+	arr[0][0] = 1;
+
+	for (int y = 1; y &lt; nRows; y++) {
+
+		arr[y][0] = arr[y - 1][0];
+
+		for (int x = 1; x &le; y; x++)
+			arr[y][x] = arr[y - 1][x - 1] + arr[y - 1][x];
+	
+	}
+
+	return arr;
+
+}</content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>ms_generatePascalTriangle</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.java</scope>
+</snippet>

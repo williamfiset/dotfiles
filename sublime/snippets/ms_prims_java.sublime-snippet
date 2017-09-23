@@ -1,0 +1,35 @@
+<snippet>
+  <content>static long prims(int[][] dist) {
+    long total = 0;
+    boolean[] isConnected = new boolean[n];
+    isConnected[0] = true;
+    // Initialize the minimum distances from the starting node
+    int[] minDist = new int[n];
+    for (int i = 1; i &lt; n; i++)
+        minDist[i] = dist[0][i];
+    // Greedily add shortest edge from connected part to disconnect part each time
+    for (int nConnected = 1; nConnected &lt; n; nConnected++) {
+        // Find smallest distance
+        int smallest = Integer.MAX_VALUE;
+        int index = -1;
+        for (int i = 0; i &lt; n; i++)
+            if (!isConnected[i] &amp;&amp; minDist[i] &lt; smallest) {
+                smallest = minDist[i];
+                index = i;
+            }
+        // Connect to selected node
+        isConnected[index] = true;
+        total += smallest;
+        // Update minimum distances
+        for (int i = 0; i &lt; n; i++)
+            if (!isConnected[i])
+                minDist[i] = Math.min(minDist[i], dist[index][i]);
+    }
+    return total;
+}</content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>ms_prims</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <scope>source.java</scope>
+</snippet>
+

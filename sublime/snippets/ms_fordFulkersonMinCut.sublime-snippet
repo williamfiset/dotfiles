@@ -1,0 +1,58 @@
+<snippet>
+	<content>static boolean[] fordFulkerson(Node source, Node target, int n) {
+    boolean pathWasFound = true;
+    boolean[] minCut = new boolean[n];
+    while (pathWasFound) {
+      pathWasFound = false;
+      Arrays.fill(minCut, false);
+      Long bottleneck = getBottleNeck(source, target, Long.MAX_VALUE, minCut);
+      if (bottleneck != null &amp;&amp; bottleneck &gt; 0) pathWasFound = true;
+    }
+    return minCut;
+}
+static Long getBottleNeck(Node current, Node target, boolean[] visited, long currentBottleNeck) {
+  if (visited[current.index]) return null;
+  if (current.index == target.index) return currentBottleNeck;
+  visited[current.index] = true;
+  for (Edge edge : current.adj)
+    if (edge.capacityLeft &gt; 0) {
+      Long bottleneck = getBottleNeck(
+        edge.target, target, visited, Math.min(currentBottleNeck, edge.capacityLeft));
+      if (bottleneck != null) {
+        edge.capacityLeft -= bottleneck;
+        edge.opposite.capacityLeft += bottleneck;
+        return bottleneck;
+      }
+    }
+  return null; // Dead-end
+}
+class Node {
+  List&lt;Edge&gt; adj = new ArrayList&lt;Edge&gt;();
+  int index;
+  public Node(int index) { this.index = index; }
+  public static void addEdge(Node initial, Node target, long capacity) {
+    Edge edge = new Edge(initial, target, capacity);
+    edge.originalCapacity = capacity;
+    initial.adj.add(edge);
+    Edge reversed = new Edge(target, initial, 0);
+    target.adj.add(reversed);
+    edge.opposite = reversed;
+    reversed.opposite = edge;
+  }
+}
+class Edge {
+  Edge opposite = null;
+  Node initial, target;
+  // Residual edges should have originalCapacity=null 
+  // so that this can be used to determine which nodes are the originals
+  Long originalCapacity = null;
+  long capacityLeft;
+  public Edge(Node initial, Node target, long capacity) {
+    this.initial = initial; this.target = target; this.capacityLeft = capacity;
+  }
+}</content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>ms_fordFulkersonMaxFlow</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.java</scope>
+</snippet>

@@ -1,0 +1,81 @@
+<snippet>
+	<content><![CDATA[/*
+*	Calculates the minimum distance required to travel from the starting node to the ending node.
+*	This algorithm works on both directed and undirected graphs with non-negative edges.
+*
+*	@param	distances	an adjacency matrix of the distances between each node (-1 means they do not connect)
+*	@param	startNode	index of the starting node
+*	@param	endNode		index of the ending node
+*	@return	minimum distance 
+*/ 
+static int dijkstra(int[][] distances, int startNode, int endNode) {
+
+		/* SETUP */
+
+	// Flags to determine if a given node has been visited yet
+	boolean[] visited = new boolean[distances.length];
+
+	// Minimum distance to a given node from startNode
+	Integer[] minSums = new Integer[distances.length]; 
+
+	// The distance to the startNode from the startNode will always be 0
+	minSums[startNode] = 0;
+
+	// Begin at the starting node
+	int currentNode = startNode;
+
+		/* DO BREATH-FIRST SEARCH */
+
+	while (true) {
+
+		Integer smallestNode = null;
+		
+		/* If this node was not visited before, decrease the unvisited counter, and mark as visited */
+		visited[currentNode] = true;
+
+		/* Try to connect to all other nodes */
+		for (int i = 0; i < distances.length; i++) {
+
+			/*	Calculate and update the minimum path (if it's smaller) to point i from currentNode */
+			if (distances[currentNode][i] != -1) {
+				
+				// Set as smallest sum if no sum has been stored yet
+				if (minSums[i] == null)
+					minSums[i] = minSums[currentNode] + distances[currentNode][i];
+
+				// Set as smallest sum if it is smaller than the value previously stored
+				else
+					minSums[i] = Math.min(minSums[i], minSums[currentNode] + distances[currentNode][i]);
+
+			}
+
+			/*	Figure out which node to check next:
+			  	-Can't be unreachable from the nodes we have explored so far (minSums[i] can't be null)
+			  	-Can't be visited already
+			  	-Must be the smallest so far
+			*/
+			if (minSums[i] != null && !visited[i] && (smallestNode == null || minSums[i] < minSums[smallestNode]))
+				smallestNode = i;
+
+		}
+
+        /* Return the minimum sum if we have nothing left to process (returns null if end is unreachable) */
+        if (smallestNode == null) {
+        	if (minSums[endNode] == null) {
+        		return -1;
+        	} else return minSums[endNode];
+        }
+
+        /* Set the next node we want to check in the next iteration */
+        currentNode = smallestNode;
+
+	}
+
+}
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>ms_dijkstra</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.java</scope>
+</snippet>

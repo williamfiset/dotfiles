@@ -1,0 +1,14 @@
+<snippet>
+	<content>// Returns the angle of the corner ABC in radians (0 &lt;= return_value &lt;= PI)
+// NOTE: Something doesn't quite look right here....
+static double angleOfCorner(Point2D a, Point2D b, Point2D c) {
+    double TWO_PI = Math.PI*2.0;
+    double angle1 = findAngleBetweenPoints(a, b);
+    double angle2 = findAngleBetweenPoints(b, c);
+    return Math.PI - (((angle1 - angle2) % TWO_PI + TWO_PI) % TWO_PI);
+}</content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>ms_angleOfCorner</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.java</scope>
+</snippet>

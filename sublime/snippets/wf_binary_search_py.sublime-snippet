@@ -1,0 +1,19 @@
+<snippet>
+	<content><![CDATA[
+def binarySearch(arr, key):
+
+	def _binarySearch( arr, key, low, high ):
+
+		if high < low: return False
+
+		mid = low + (high - low) / 2
+
+		if arr[mid] > key:   return _binarySearch(arr, key, low, mid - 1 )
+		elif arr[mid] < key: return _binarySearch(arr, key, mid + 1, high )
+		else: return True
+
+	return _binarySearch(arr, key, 0, len(arr)-1)
+]]></content>
+	<tabTrigger>wf_binary_search</tabTrigger>
+	<scope>source.python</scope>
+</snippet>

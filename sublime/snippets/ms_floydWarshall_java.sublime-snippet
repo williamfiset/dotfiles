@@ -1,0 +1,28 @@
+<snippet>
+	<content>
+static void floydWarshall(double[][] dist) {
+  
+  int n = dist.length;
+
+  // Compute shortest paths
+  for (int k = 0; k &lt; n; k++)
+    for (int i = 0; i &lt; n; i++)
+      for (int j = 0; j &lt; n; j++)
+        if (dist[i][k] + dist[k][j] &lt; dist[i][j])
+          dist[i][j] = dist[i][k] + dist[k][j];
+
+  // Identify negative cycles
+  for (int k = 0; k &lt; n; k++)
+    for (int i = 0; i &lt; n; i++)
+      for (int j = 0; j &lt; n; j++)
+        if (dist[i][k] + dist[k][j] &lt; dist[i][j])
+          dist[i][j] = Double.NEGATIVE_INFINITY;
+
+}
+
+</content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>ms_floyd_warshall</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.java</scope>
+</snippet>

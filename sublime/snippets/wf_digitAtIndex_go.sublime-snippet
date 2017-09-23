@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[
+func digitAtIndex(n int, i int) int {
+	return (n / int(math.Pow(10.0, float64(i)))) % 10
+}
+]]></content>
+	<tabTrigger>wf_digitAtIndex</tabTrigger>
+	<scope>source.go</scope>
+</snippet>

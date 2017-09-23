@@ -1,0 +1,22 @@
+<snippet>
+	<content><![CDATA[
+import random
+# isprime - Rabin_Miller. Fail rate is: (1/2)^certainty
+def isprime(p, certainty = 10 ):
+    if(p<2): return False
+    if(p!=2 and (p&1)==0): return False
+    s=p-1
+    while((s&1)==0): s>>=1
+    for _ in xrange(certainty):
+        a=random.randrange(p-1)+1
+        temp=s
+        mod=pow(a,temp,p)
+        while(temp!=p-1 and mod!=1 and mod!=p-1):
+            mod=(mod*mod)%p
+            temp<<=1
+        if(mod!=p-1 and  (temp&1)==0): return False
+    return True
+]]></content>
+	<tabTrigger>wf_isprime_rabin</tabTrigger>
+	<scope>source.python</scope>
+</snippet>

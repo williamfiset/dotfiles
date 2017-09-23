@@ -1,0 +1,29 @@
+<snippet>
+	<content><![CDATA[boolean arePermutations(int a, int b) {
+
+    String aStr = String.valueOf(a);
+    String bStr = String.valueOf(b);
+
+    // Check to see if they are different lengths
+    if (aStr.length() != bStr.length())
+        return false;
+
+    // Count digits
+    int[] aDigits = new int[10], bDigits = new int[10];
+    for (int i = 0; i < aStr.length(); i++) {
+        aDigits[aStr.charAt(i) - '0']++;
+        bDigits[bStr.charAt(i) - '0']++; 
+    }
+
+    // Compare counts of digits
+    for (int i = 0; i < 10; i++)
+        if (aDigits[i] != bDigits[i])
+            return false;
+
+    return true;
+}]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>ms_arePermutations</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.java</scope>
+</snippet>

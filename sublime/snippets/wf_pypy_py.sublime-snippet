@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[
+#!/usr/local/bin/pypy
+# -*- coding: utf-8 -*-
+]]></content>
+	<tabTrigger>pypy</tabTrigger>
+	<scope>source.python</scope>
+</snippet>

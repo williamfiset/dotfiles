@@ -1,0 +1,10 @@
+<snippet>
+	<content>static Point2D polarToCartesian(double degrees, double radius) {
+  double radians = Math.toRadians(degrees);
+  return new Point2D.Double(radius*Math.cos(radians), radius*Math.sin(radians));
+}</content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>ms_polarToCartesian</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.java</scope>
+</snippet>

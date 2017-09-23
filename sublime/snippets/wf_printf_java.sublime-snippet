@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[
+System.out.printf("$1\n", $0);
+]]></content>
+
+	<tabTrigger>pf</tabTrigger>
+	<scope>source.java</scope>
+
+</snippet>

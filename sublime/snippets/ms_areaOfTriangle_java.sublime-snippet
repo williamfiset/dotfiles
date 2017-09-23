@@ -1,0 +1,12 @@
+<snippet>
+	<content>static double area(Point2D a, Point2D b, Point2D c) {
+  double temp1 = a.getX()*(b.getY() - c.getY());
+  double temp2 = b.getX()*(c.getY() - a.getY());
+  double temp3 = c.getX()*(a.getY() - b.getY());
+  return Math.abs(temp1 + temp2 + temp3)/2.0;
+}</content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>ms_areaOfTriangle</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.java</scope>
+</snippet>

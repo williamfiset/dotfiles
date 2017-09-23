@@ -1,0 +1,25 @@
+<snippet>
+	<content><![CDATA[
+from math import sqrt
+# Sieve of Eratosthenes
+# Generates all the primes up to and including limit
+def sieve(limit):
+    if limit < 2: return []
+    is_prime = [False] * (limit+1)
+    is_prime[1] = True; primes = []
+    root = int(sqrt((limit+1)))
+    for i in xrange(2, root+1):
+        if not is_prime[i]:
+            primes.append(i)
+            for j in xrange( i*i, (limit+1), i):
+                is_prime[j] = True
+    for i in xrange(root+1, (limit+1)):
+        if not is_prime[i]:
+            primes.append(i)
+    return primes
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>wf_sieve_eratosthenes</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.python</scope>
+</snippet>

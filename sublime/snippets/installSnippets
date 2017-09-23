@@ -1,0 +1,32 @@
+#!/bin/sh
+
+# These the are places where sublime is installed by default
+SUBLIME2_MAC="$HOME/Library/Application Support/Sublime Text 2/Packages/User"
+SUBLIME3_MAC="$HOME/Library/Application Support/Sublime Text 3/Packages/User"
+
+SUBLIME2_UBUNTU="$HOME/.config/sublime-text-2/Packages/User"
+SUBLIME3_UBUNTU="$HOME/.config/sublime-text-3/Packages/User"
+
+rm "${SUBLIME2_MAC}"/wf_* 2> /dev/null
+rm "${SUBLIME2_MAC}"/ms_* 2> /dev/null
+
+rm "${SUBLIME3_MAC}"/wf_* 2> /dev/null
+rm "${SUBLIME3_MAC}"/ms_* 2> /dev/null
+
+rm "${SUBLIME2_UBUNTU}"/ms_* 2> /dev/null
+rm "${SUBLIME2_UBUNTU}"/wf_* 2> /dev/null
+
+rm "${SUBLIME3_UBUNTU}"/ms_* 2> /dev/null
+rm "${SUBLIME3_UBUNTU}"/wf_* 2> /dev/null
+
+# Copy all the snippets to those directories
+cp *.sublime-snippet "${SUBLIME2_MAC}" 2> /dev/null
+cp *.sublime-snippet "${SUBLIME3_MAC}" 2> /dev/null
+
+cp *.sublime-snippet "${SUBLIME2_UBUNTU}" 2> /dev/null
+cp *.sublime-snippet "${SUBLIME3_UBUNTU}" 2> /dev/null
+
+# Update Atom Snippets
+cp snippets.cson ~/.atom/ 2> /dev/null
+
+echo "\nUpdates Snippets for in Sublime and Atom! You May need to restart your editor to see changes take place.\n"

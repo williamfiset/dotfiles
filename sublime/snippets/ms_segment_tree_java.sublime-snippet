@@ -1,0 +1,129 @@
+<snippet>
+	<content>
+class STNode {
+
+  int minPos, maxPos, min = 0, sum = 0, lazy = 0;
+  STNode left, right;
+
+  public STNode(int l, int r) {
+
+    minPos = l;
+    maxPos = r;
+
+    // Reached leaf
+    if (l == r) {
+      left = right = null;
+
+    // Add children
+    } else {
+      int mid = (l + r) / 2;
+      left = new STNode(l, mid);
+      right = new STNode(mid + 1, r);
+    }
+
+  }
+
+  // Adjust all values in the interval [l, r) by a particular amount
+  public void update(int l, int r, int change) {
+
+    // Do lazy updates to children
+    propagate();
+
+    // Node's range fits inside query range
+    if (l &lt;= minPos && maxPos &lt; r) {
+
+      sum += change * (maxPos - minPos);
+      min += change;
+
+      // Lazily propagate update to children
+      if (left != null)
+        left.lazy += change;
+      if (right != null)
+        right.lazy += change;
+
+    // Ranges do not overlap
+    } else if (r &lt;= minPos || l &gt; maxPos) {
+
+      // Do nothing
+
+    // Ranges partially overlap
+    } else {
+
+      left.update(l, r, change);
+      right.update(l, r, change);
+      sum = left.sum + right.sum;
+      min = Math.min(left.min, right.min);
+
+    }
+
+  }
+
+  // Get the sum in the interval [l, r)
+  public int sum(int l, int r) {
+
+    // Do lazy updates to children
+    propagate();
+
+    // Node's range fits inside query range
+    if (l &lt;= minPos && maxPos &lt; r)
+      return min;
+
+    // Ranges do not overlap
+    else if (r &lt;= minPos || l &gt; maxPos)
+      return 0;
+
+    // Ranges partially overlap
+    else
+      return left.sum(l, r) + right.sum(l, r);
+
+  }
+
+  // Get the minimum value in the interval [l, r)
+  public int min(int l, int r) {
+
+    // Do lazy updates to children
+    propagate();
+
+    // Node's range fits inside query range
+    if (l &lt;= minPos && maxPos &lt; r)
+      return min;
+
+    // Ranges do not overlap
+    else if (r &lt;= minPos || l &gt; maxPos)
+      return Integer.MAX_VALUE;
+
+    // Ranges partially overlap
+    else
+      return Math.min(left.min(l, r), right.min(l, r));
+
+  }
+
+  // Does any updates to this node that haven't been done yet, and lazily updates its children
+  // NOTE: This method must be called before updating or accessing a node
+  public void propagate() {
+
+    if (lazy != 0) {
+
+      sum += lazy * (maxPos - minPos);
+      min += lazy;
+
+      // Lazily propagate updates to children
+      if (left != null)
+        left.lazy += lazy;
+      if (right != null)
+        right.lazy += lazy;
+
+      lazy = 0;
+
+    }
+
+  }
+
+}
+
+</content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>ms_segment_tree</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.java</scope>
+</snippet>

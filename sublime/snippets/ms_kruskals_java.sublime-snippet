@@ -1,0 +1,47 @@
+<snippet>
+	<content>
+static Double kruskals(Edge[] edges, int n) {
+
+  UnionFind uf = new UnionFind(n);
+  double sum = 0;
+  Arrays.sort(edges);
+
+  for (Edge edge : edges) {
+
+    // Already connected
+    if (uf.connected(edge.from, edge.to))
+      continue;
+
+    // Add new edge
+    sum += edge.w;
+    uf.union(edge.from, edge.to);
+
+  }
+
+  if (uf.getSize(0) != n)
+    return null;
+
+  return sum;
+
+}
+
+class Edge implements Comparable&lt;Edge&gt; {
+
+  int from, to;
+  double w;
+  public Edge(int from, int to, double w) {
+    this.from = from;
+    this.to = to;
+    this.w = w;
+  }
+  @Override public int compareTo(Edge other) {
+    return Double.compare(w, other.w);
+  }
+}
+
+</content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>ms_kruskals_mst</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.java</scope>
+</snippet>

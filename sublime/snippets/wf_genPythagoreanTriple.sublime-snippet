@@ -1,0 +1,28 @@
+<snippet>
+	<content><![CDATA[
+from math import sqrt, floor
+def gcd ( a , b ):
+    while b != 0: a, b = b, a % b
+    return a
+# Generates pythagorean triples up to and NOT including max_perimeter
+def genPythagoreanTriple(max_perimeter):
+	for m in xrange(2, int(floor(sqrt(max_perimeter)))+1):
+		for n in xrange(1, m):
+			m_2 = m*m; n_2 = n*n
+			a = m_2 - n_2; b = 2*m*n; c = m_2 + n_2; abc = a+b+c
+			if abc > max_perimeter: break
+			if gcd(a,b) != 1: continue
+			if gcd(a,c) != 1: continue
+			if gcd(b,c) != 1: continue
+			yield (a, b, c); k = 2
+			while True:
+				A = a * k; B = b * k; C = c * k; ABC = A+B+C
+				if ABC > max_perimeter: break
+				yield (A, B, C); k += 1
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>wf_genPythagoreanTriple</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.python</scope>
+</snippet>

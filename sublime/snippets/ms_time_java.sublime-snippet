@@ -1,0 +1,12 @@
+<snippet>
+	<content>long start = System.nanoTime();
+for (int i = 0; i &lt; ${1:ITER_MAX}; i++ ) {
+  ${0:CODE}
+}
+long end = System.nanoTime();
+System.out.println( (end-start)/1e9 );</content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>ms_time</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.java</scope>
+</snippet>

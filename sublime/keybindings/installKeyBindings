@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# These the are places where sublime is installed by default
+SUBLIME2_MAC="$HOME/Library/Application Support/Sublime Text 2/Packages/User/"
+SUBLIME3_MAC="$HOME/Library/Application Support/Sublime Text 3/Packages/User/"
+
+SUBLIME2_LINUX="$HOME/.config/sublime-text-2/Packages/User"
+SUBLIME3_LINUX="$HOME/.config/sublime-text-3/Packages/User"
+
+# Copy all the snippets to those directories
+cp *.sublime-keymap "${SUBLIME2_MAC}" 2> /dev/null
+cp *.sublime-keymap "${SUBLIME3_MAC}" 2> /dev/null
+
+cp *.sublime-keymap "${SUBLIME2_LINUX}" 2> /dev/null
+cp *.sublime-keymap "${SUBLIME3_LINUX}" 2> /dev/null
+
+echo
+echo "Updated Keybindings in Sublime! You May need to restart your editor to see changes take place."
+echo

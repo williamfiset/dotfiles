@@ -1,0 +1,27 @@
+<snippet>
+	<content>// Points must be ordered (either clockwise or counter-clockwise)
+static double findAreaOfPolygon(Point2D[] pts) {
+  double area = 0;
+  for (int i = 1; i + 1 &lt; pts.length; i++)
+    area += areaOfTriangulation(pts[0], pts[i], pts[i+1]);
+  return Math.abs(area);
+}
+
+// May return positive or negative value (important for polygon method)
+static double areaOfTriangulation(Point2D a, Point2D b, Point2D c) {
+  return crossProduct(subtract(a, b), subtract(a, c))/2.0;
+}
+
+// Find the difference between two points
+static Point2D subtract(Point2D a, Point2D b) {
+  return new Point2D.Double(a.getX() - b.getX(), a.getY() - b.getY());
+}
+
+static double crossProduct(Point2D a, Point2D b) {
+  return a.getX()*b.getY() - a.getY()*b.getX();
+}</content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>ms_areaOfPolygon</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.java</scope>
+</snippet>

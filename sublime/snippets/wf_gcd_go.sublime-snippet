@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[
+func gcd(a int, b int) int {
+	for b != 0 {
+		a, b = b, a%b
+	}
+	return a
+}
+]]></content>
+	<tabTrigger>wf_gcd</tabTrigger>
+	<scope>source.go</scope>
+</snippet>

@@ -1,0 +1,14 @@
+<snippet>
+	<content><![CDATA[
+# Replace n's digit at index i with digit d (works with any integer i)
+def replaceDigit( n, i, d ):
+	digitAtIndex = lambda n, i: (n / (10**i)) % 10
+	n -= digitAtIndex(n, i) * (10 ** i)
+	n += (10 ** i) * d 
+	return n
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>wf_replaceDigitAtIndex</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.python</scope>
+</snippet>

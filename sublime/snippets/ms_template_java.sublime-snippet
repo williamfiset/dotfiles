@@ -1,0 +1,293 @@
+<snippet>
+	<content>// Copyright (C) William Fiset - All Rights Reserved
+// Unauthorized copying of this file, via any medium is strictly prohibited
+// This software is proprietary and confidential
+// Written by William Fiset &lt;william.alexandre.fiset@gmail.com&gt;
+
+import static java.util.Collections.*;
+import static java.lang.System.*;
+import static java.util.Arrays.*;
+import static java.lang.Math.*;
+import java.awt.geom.*;
+import java.math.*;
+import java.util.*;
+import java.io.*;
+
+public class ${TM_FILENAME/(.*)\..+/$1/} {
+  
+  static InputReader in = new InputReader();
+  static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+  static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+  public static void main(String[] Fiset) throws IOException { try {
+    
+    $0
+
+  } catch (IOException e) { }
+  finally { bw.flush(); } }
+
+  static &lt;T&gt; void inc(Map &lt;T, Integer&gt; map, T key) {
+    Integer val = map.get(key);
+    if (val == null) val = 0;
+    map.put(key, val + 1);
+  }
+
+  static &lt;T, V&gt; void add( Map &lt;T, List &lt;V&gt;&gt; map, T key, V value) {
+    List &lt;V&gt; list = map.get(key);
+    if (list == null) { list = new ArrayList &lt;V&gt;(); map.put(key, list); }
+    list.add(value);
+  }
+
+  static char max(final char ... vals) { char mi = Character.MIN_VALUE; for(int i=0;i&lt;vals.length;i++) if(vals[i]&gt;mi)mi=vals[i]; return mi; }
+  static char max(final char [] vals, char ... x ) { char mi = Character.MIN_VALUE; for(int i=0;i&lt;vals.length;i++) if(vals[i]&gt;mi)mi=vals[i]; return mi; }
+  static  int max(final int ... vals) { int mi = Integer.MIN_VALUE; for(int i=0;i&lt;vals.length;i++) if(vals[i]&gt;mi)mi=vals[i]; return mi; }
+  static  int max(final int [] vals, int ... x ) { int mi = Integer.MIN_VALUE; for(int i=0;i&lt;vals.length;i++) if(vals[i]&gt;mi)mi=vals[i]; return mi; }
+  static long max(final long ... vals) { long mi = Long.MIN_VALUE; for(int i=0;i&lt;vals.length;i++) if(vals[i]&gt;mi)mi=vals[i]; return mi; }
+  static long max(final long [] vals, long ... x ) { long mi = Long.MIN_VALUE; for(int i=0;i&lt;vals.length;i++) if(vals[i]&gt;mi)mi=vals[i]; return mi; }
+  static double max(final double ... vals) { double mi = Double.MIN_VALUE; for(int i=0;i&lt;vals.length;i++) if(vals[i]&gt;mi)mi=vals[i]; return mi; }
+  static double max(final double [] vals, double ... x ) { double mi = Double.MIN_VALUE; for(int i=0;i&lt;vals.length;i++) if(vals[i]&gt;mi)mi=vals[i]; return mi; }
+
+  static char min(final char ... vals) { char mi = Character.MAX_VALUE; for(int i=0;i&lt;vals.length;i++) if(vals[i]&lt;mi)mi=vals[i]; return mi; }
+  static char min(final char [] vals, char ... x ) { char mi = Character.MAX_VALUE; for(int i=0;i&lt;vals.length;i++) if(vals[i]&lt;mi)mi=vals[i]; return mi; }
+  static  int min(final int ... vals) { int mi = Integer.MAX_VALUE; for(int i=0;i&lt;vals.length;i++) if(vals[i]&lt;mi)mi=vals[i]; return mi; }
+  static  int min(final int [] vals, int ... x ) { int mi = Integer.MAX_VALUE; for(int i=0;i&lt;vals.length;i++) if(vals[i]&lt;mi)mi=vals[i]; return mi; }
+  static long min(final long ... vals) { long mi = Long.MAX_VALUE; for(int i=0;i&lt;vals.length;i++) if(vals[i]&lt;mi)mi=vals[i]; return mi; }
+  static long min(final long [] vals, long ... x ) { long mi = Long.MAX_VALUE; for(int i=0;i&lt;vals.length;i++) if(vals[i]&lt;mi)mi=vals[i]; return mi; }
+  static double min(final double ... vals) { double mi = Double.MAX_VALUE; for(int i=0;i&lt;vals.length;i++) if(vals[i]&lt;mi)mi=vals[i]; return mi; }
+  static double min(final double [] vals, double ... x ) { double mi = Double.MAX_VALUE; for(int i=0;i&lt;vals.length;i++) if(vals[i]&lt;mi)mi=vals[i]; return mi; }
+
+  static int feq(final char [] vals, final char key) {int f = 0; for(int i=0;i&lt;vals.length;i++) if(vals[i]==key) f++; return f; }
+  static int feq(final int [] vals, final int key) {int f = 0; for(int i=0;i&lt;vals.length;i++) if(vals[i]==key) f++; return f; }
+  static int feq(final long [] vals, final long key) {int f = 0; for(int i=0;i&lt;vals.length;i++) if(vals[i]==key) f++; return f; }
+  static int feq(final double [] vals, final double key, final double epsilon) {int f = 0; for(int i=0;i&lt;vals.length;i++) if(Math.abs(vals[i]-key) &lt; epsilon ) f++; return f; }
+
+  // THESE CAN OVERFLOW!
+  static long sum(final int ... vals) { long s=0; for(int i=0;i&lt;vals.length;i++)s+=vals[i]; return s; }
+  static long sum(final int[] vals, int ... x) {long s = 0; for(int i=0;i&lt;vals.length;i++)s+=vals[i];return s; }
+  static long sum(final long ... vals) { long s=0; for(int i=0;i&lt;vals.length;i++)s+=vals[i]; return s; }
+  static long sum(final long[] vals, long ... x) {long s = 0; for(int i=0;i&lt;vals.length;i++)s+=vals[i];return s; }
+  static double sum(final double ... vals) { double s=0; for(int i=0;i&lt;vals.length;i++)s+=vals[i]; return s; }
+  static double sum(final double[] vals, double ... x) {double s = 0; for(int i=0;i&lt;vals.length;i++)s+=vals[i];return s; }
+
+  static void p(final byte[][] o) { p((Object)o); }
+  static void p(final char[][] o) { p((Object)o); }
+  static void p(final short[][] o) { p((Object)o); }
+  static void p(final int[][] o) { p((Object)o); }
+  static void p(final long[][] o) { p((Object)o); }
+  static void p(final float[][] o) { p((Object)o); }
+  static void p(final double[][] o) { p((Object)o); }
+  static void p(final boolean[][] o) { p((Object)o); }
+  static void p(final Object[][] o) { p((Object)o); }
+  static void p(final Object ... o) { for (Object obj : o) p(obj); }
+  
+  static void p(final Object o) {
+    if (o == null) out.println("null");
+    else if (o instanceof int[] ) out.println(Arrays.toString((int[])o));
+    else if (o instanceof long[] ) out.println(Arrays.toString((long[])o));
+    else if (o instanceof double[] ) out.println(Arrays.toString((double[])o));
+    else if (o instanceof float[] ) out.println(Arrays.toString((float[])o));
+    else if (o instanceof byte[] ) out.println(Arrays.toString((byte[])o));
+    else if (o instanceof char[] ) out.println(Arrays.toString((char[])o));
+    else if (o instanceof short[] ) out.println(Arrays.toString((short[])o));
+    else if (o instanceof boolean[] ) out.println(Arrays.toString((boolean[])o));
+    else if ((o instanceof int[][])    || (o instanceof long[][])  || (o instanceof Object[][]) ||
+             (o instanceof double[][]) || (o instanceof float[][]) || (o instanceof byte[][])   || 
+             (o instanceof char[][])   || (o instanceof short[][]) || (o instanceof boolean[][]))
+      for (Object ar : (Object[])o) p(ar);
+    else if (o instanceof Object[]) out.println(Arrays.toString((Object[])o));
+    else out.println(o);
+  }
+
+}
+
+class InputReader {
+  private int c, buffer_sz, buf_index, num_bytes_read;
+  private final byte[] buf;
+  private final java.io.InputStream stream;
+  private static final int DEFAULT_BUFFER_SZ = 1 &lt;&lt; 16; // 2^16
+  private static final java.io.InputStream DEFAULT_STREAM = System.in;
+  private static final byte EOF   = -1; // End Of File (EOF) character
+  private static final byte NL    = 10; // '\n' - New Line (NL)
+  private static final byte SP    = 32; // ' '  - Space character (SP)
+  private static final byte DASH  = 45; // '-'  - Dash character (DOT)
+  private static final byte DOT   = 46; // '.'  - Dot character (DOT)
+  private static final byte[] bytes = new byte[58];
+  private static final int [] ints  = new int[58];
+  private static final char[] chars = new char[128];
+  private static char[] charBuffer = new char[128];
+  private static final int MAX_DECIMAL_PRECISION = 21;
+  static {
+    char ch = ' '; int value = 0; byte _byte = 0;
+    for (int i = 48; i &lt;  58; i++ ) bytes[i] = _byte++;
+    for (int i = 48; i &lt;  58; i++ )  ints[i] = value++;
+    for (int i = 32; i &lt; 128; i++ ) chars[i] = ch++;
+  }
+  private static final double[][] doubles = {
+    { 0.0d,0.00d,0.000d,0.0000d,0.00000d,0.000000d,0.0000000d,0.00000000d,0.000000000d,0.0000000000d,0.00000000000d,0.000000000000d,0.0000000000000d,0.00000000000000d,0.000000000000000d,0.0000000000000000d,0.00000000000000000d,0.000000000000000000d,0.0000000000000000000d,0.00000000000000000000d,0.000000000000000000000d },
+    { 0.1d,0.01d,0.001d,0.0001d,0.00001d,0.000001d,0.0000001d,0.00000001d,0.000000001d,0.0000000001d,0.00000000001d,0.000000000001d,0.0000000000001d,0.00000000000001d,0.000000000000001d,0.0000000000000001d,0.00000000000000001d,0.000000000000000001d,0.0000000000000000001d,0.00000000000000000001d,0.000000000000000000001d },
+    { 0.2d,0.02d,0.002d,0.0002d,0.00002d,0.000002d,0.0000002d,0.00000002d,0.000000002d,0.0000000002d,0.00000000002d,0.000000000002d,0.0000000000002d,0.00000000000002d,0.000000000000002d,0.0000000000000002d,0.00000000000000002d,0.000000000000000002d,0.0000000000000000002d,0.00000000000000000002d,0.000000000000000000002d },
+    { 0.3d,0.03d,0.003d,0.0003d,0.00003d,0.000003d,0.0000003d,0.00000003d,0.000000003d,0.0000000003d,0.00000000003d,0.000000000003d,0.0000000000003d,0.00000000000003d,0.000000000000003d,0.0000000000000003d,0.00000000000000003d,0.000000000000000003d,0.0000000000000000003d,0.00000000000000000003d,0.000000000000000000003d },
+    { 0.4d,0.04d,0.004d,0.0004d,0.00004d,0.000004d,0.0000004d,0.00000004d,0.000000004d,0.0000000004d,0.00000000004d,0.000000000004d,0.0000000000004d,0.00000000000004d,0.000000000000004d,0.0000000000000004d,0.00000000000000004d,0.000000000000000004d,0.0000000000000000004d,0.00000000000000000004d,0.000000000000000000004d },
+    { 0.5d,0.05d,0.005d,0.0005d,0.00005d,0.000005d,0.0000005d,0.00000005d,0.000000005d,0.0000000005d,0.00000000005d,0.000000000005d,0.0000000000005d,0.00000000000005d,0.000000000000005d,0.0000000000000005d,0.00000000000000005d,0.000000000000000005d,0.0000000000000000005d,0.00000000000000000005d,0.000000000000000000005d },
+    { 0.6d,0.06d,0.006d,0.0006d,0.00006d,0.000006d,0.0000006d,0.00000006d,0.000000006d,0.0000000006d,0.00000000006d,0.000000000006d,0.0000000000006d,0.00000000000006d,0.000000000000006d,0.0000000000000006d,0.00000000000000006d,0.000000000000000006d,0.0000000000000000006d,0.00000000000000000006d,0.000000000000000000006d },
+    { 0.7d,0.07d,0.007d,0.0007d,0.00007d,0.000007d,0.0000007d,0.00000007d,0.000000007d,0.0000000007d,0.00000000007d,0.000000000007d,0.0000000000007d,0.00000000000007d,0.000000000000007d,0.0000000000000007d,0.00000000000000007d,0.000000000000000007d,0.0000000000000000007d,0.00000000000000000007d,0.000000000000000000007d },
+    { 0.8d,0.08d,0.008d,0.0008d,0.00008d,0.000008d,0.0000008d,0.00000008d,0.000000008d,0.0000000008d,0.00000000008d,0.000000000008d,0.0000000000008d,0.00000000000008d,0.000000000000008d,0.0000000000000008d,0.00000000000000008d,0.000000000000000008d,0.0000000000000000008d,0.00000000000000000008d,0.000000000000000000008d },
+    { 0.9d,0.09d,0.009d,0.0009d,0.00009d,0.000009d,0.0000009d,0.00000009d,0.000000009d,0.0000000009d,0.00000000009d,0.000000000009d,0.0000000000009d,0.00000000000009d,0.000000000000009d,0.0000000000000009d,0.00000000000000009d,0.000000000000000009d,0.0000000000000000009d,0.00000000000000000009d,0.000000000000000000009d }
+  };
+  public InputReader () { this(DEFAULT_STREAM, DEFAULT_BUFFER_SZ); }
+  public InputReader (java.io.InputStream stream) { this(stream, DEFAULT_BUFFER_SZ); }
+  public InputReader (int buffer_sz) { this(DEFAULT_STREAM, buffer_sz); }
+  public InputReader (java.io.InputStream stream, int buffer_sz) {
+    if (stream == null || buffer_sz &lt;= 0) throw new IllegalArgumentException();
+    buf = new byte[buffer_sz]; this.buffer_sz = buffer_sz; this.stream = stream;
+  }
+
+  private byte read() throws java.io.IOException {
+    if (num_bytes_read == EOF) throw new java.io.IOException();
+    if (buf_index &gt;= num_bytes_read) {
+      buf_index = 0; num_bytes_read = stream.read(buf);
+      if (num_bytes_read == EOF) return EOF; }
+    return buf[buf_index++];
+  }
+
+  private int readJunk(int token) throws java.io.IOException { 
+    if (num_bytes_read == EOF) return EOF;
+    do {while(buf_index &lt; num_bytes_read) {
+        if (buf[buf_index] &gt; token) return 0; buf_index++; }
+      num_bytes_read = stream.read(buf);
+      if (num_bytes_read == EOF) return EOF; buf_index = 0;
+    } while(true);
+  }
+
+  // Read Byte (1 signed byte)
+  public byte rb() throws java.io.IOException {
+    return (byte) ri(); }
+
+  // Read Int (32bit signed integer)
+  public int ri() throws java.io.IOException {
+    if (readJunk(DASH-1) == EOF) throw new java.io.IOException();
+    int sgn = 1, res = 0; c = buf[buf_index];
+    if (c == DASH) { sgn = -1; buf_index++; }
+    do {while(buf_index &lt; num_bytes_read) {
+        if (buf[buf_index] &gt; SP) {res = (res&lt;&lt;3)+(res&lt;&lt;1);
+          res += ints[buf[buf_index++]]; } else {
+          buf_index++; return res*sgn; } }
+      num_bytes_read = stream.read(buf);
+      if (num_bytes_read == EOF) return res*sgn; buf_index = 0;
+    } while(true);
+  }
+
+  // Read Long (64bit signed integer)
+  public long rl() throws java.io.IOException {
+    if (readJunk(DASH-1) == EOF) throw new java.io.IOException();
+    int sgn = 1; long res = 0L; c = buf[buf_index];
+    if (c == DASH) { sgn = -1; buf_index++; }
+    do {while(buf_index &lt; num_bytes_read) {if (buf[buf_index] &gt; SP) {
+          res = (res&lt;&lt;3)+(res&lt;&lt;1); res += ints[buf[buf_index++]];
+        } else {buf_index++; return res*sgn; } }
+      num_bytes_read = stream.read(buf); if (num_bytes_read == EOF) return res*sgn;
+      buf_index = 0; } while(true);
+  }
+
+  // Double the size of the internal char buffer for strings
+  private void doubleCharBufferSz() {
+    char[] newBuffer = new char[charBuffer.length &lt;&lt; 1];
+    for(int i = 0; i &lt; charBuffer.length; i++) newBuffer[i] = charBuffer[i];
+    charBuffer = newBuffer;
+  }
+
+  // Read Line (new line delimited)
+  public String rln() throws java.io.IOException {
+    try { c=read(); } catch (java.io.IOException e) { return null; }
+    if (c == NL) return ""; if (c == EOF) return null; // EOF
+    int i = 0; charBuffer[i++] = (char)c;
+    do {while(buf_index &lt; num_bytes_read) {
+        if (buf[buf_index] != NL) {
+          if (i == charBuffer.length) doubleCharBufferSz();
+          charBuffer[i++] = (char) buf[buf_index++];
+        } else {buf_index++; return new String(charBuffer, 0, i); } }
+      num_bytes_read = stream.read(buf);
+      if (num_bytes_read == EOF) return new String(charBuffer, 0, i);
+      buf_index = 0;
+    } while(true);
+  }
+
+  // Read String (String delimited)
+  public String rs() throws java.io.IOException {
+    if (num_bytes_read == EOF) return null;
+    if (readJunk(SP) == EOF) return null;
+    int i = 0; do {while(buf_index &lt; num_bytes_read) {
+        if (buf[buf_index] &gt; SP) {
+          if (i == charBuffer.length) doubleCharBufferSz();
+          charBuffer[i++] = (char) buf[buf_index++];
+        } else {buf_index++; return new String(charBuffer, 0, i); }
+      } num_bytes_read = stream.read(buf);
+      if (num_bytes_read == EOF) return new String(charBuffer, 0, i);
+      buf_index = 0;
+    } while(true);
+  }
+
+  // Read Double
+  public double rd() throws java.io.IOException {
+    String doubleVal = rs();
+    if (doubleVal == null) throw new java.io.IOException();
+    return Double.valueOf(doubleVal);
+  }
+
+  // Read Double Fast (WARNING: this is less precise)
+  public double rdf() throws java.io.IOException {
+    c = read(); int sgn = 1; while (c &lt;= SP) c = read();
+    if (c == DASH) { sgn = -1; c = read(); }
+    double res = 0.0; while (c &gt; DOT) {res *= 10.0; res += ints[c]; c = read(); }
+    if (c == DOT) {int i = 0; c = read(); while (c &gt; SP &amp;&amp; i &lt; MAX_DECIMAL_PRECISION)
+      { res += doubles[ints[c]][i++]; c = read(); } }
+    return res * sgn;
+  }
+
+  // Read Byte Array
+  public byte[] rba(int n) throws java.io.IOException {
+    byte[] ar = new byte[n]; for (int i = 0; i &lt; n; i++) ar[i] = rb();
+    return ar;
+  }
+
+  // Read Integer Array
+  public int[] ria(int n) throws java.io.IOException {
+    int[] ar = new int[n]; for (int i = 0; i &lt; n; i++) ar[i] = ri();
+    return ar;
+  }
+
+  // Read Long Array
+  public long[] rla(int n) throws java.io.IOException {
+    long[] ar = new long[n]; for (int i = 0; i &lt; n; i++) ar[i] = rl();
+    return ar;
+  }
+
+  // Read Double Array
+  public double[] rda(int n) throws java.io.IOException {
+    double[] ar = new double[n]; for (int i = 0; i &lt; n; i++) ar[i] = rd();
+    return ar;
+  }
+
+  // Read Double Array Fast
+  public double[] rdaf(int n) throws java.io.IOException {
+    double[] ar = new double[n]; for (int i = 0; i &lt; n; i++) ar[i] = rdf();
+    return ar;
+  }
+  
+  // Read String Array
+  public String[] rsa(int n) throws java.io.IOException {
+    String[] ar = new String[n]; for (int i = 0; i &lt; n; i++) ar[i] = rs();
+    return ar;
+  }
+
+}
+
+
+
+
+</content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>ms_template</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.java</scope>
+</snippet>

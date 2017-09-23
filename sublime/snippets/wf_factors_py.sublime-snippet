@@ -1,0 +1,20 @@
+<snippet>
+	<content><![CDATA[
+# Returns the factors of a given number, unsorted.
+def factors(n):
+	
+	l = [1]
+	for f in xrange(2, int(n**0.5)+1):
+		if n % f == 0:
+			c = n / f
+			if c is not f:
+				l.append(f)
+				l.append(c)
+			else:
+				l.append(f)
+
+	return l
+]]></content>
+	<tabTrigger>wf_factors</tabTrigger>
+	<scope>source.python</scope>
+</snippet>
