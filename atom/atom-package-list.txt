@@ -1,4 +1,4 @@
-Remote-FTP@1.1.3
+Remote-FTP@1.1.3 
 Zen@0.18.0
 apathy-theme@1.10.6
 atom-beautify@0.30.5
