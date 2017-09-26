@@ -116,8 +116,21 @@ module.exports = {
   //   `@company/project`
   //   `project#1.0.1`
   plugins: [
+
+    // Better link clicking
     'hyperlinks',
-    // 'hyperterm-paste',
+    
+    // Displays a status bar with neat info
+    'hyper-statusline',
+
+    // Pimps hyper tabs
+    // 'hyper-tabs-enhanced',
+
+    // Music
+    'hyper-spotify',
+
+    // Git rocket
+    'gitrocket'
 
     // Themes:
     // 'hyperterm-atom-dark',
@@ -126,6 +139,18 @@ module.exports = {
     //'hyperline'
     //'hyperpower'
   ],
+
+  // Hyper tabs plugin config
+  /* 
+  hyperTabs: {
+    // closeAlign: 'right',
+    // activityColor: 'salmon', 
+    tabIconsColored: false, // defaults to false
+    tabIcons: true,         // defaults to true
+    border: false,          // defaults to false
+    trafficButtons: false,  // defaults to false
+  },
+  */
 
   MaterialTheme: {
     // Set the theme variant, 
