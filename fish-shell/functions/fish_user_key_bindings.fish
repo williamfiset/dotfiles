@@ -9,6 +9,6 @@ function pop_directory
 end
 
 function fish_user_key_bindings
-  bind \c\[ pop_directory
+  bind \cd pop_directory
 end
 
