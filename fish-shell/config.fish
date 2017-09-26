@@ -1,4 +1,7 @@
 
+# set fish_greeting 'It is:' (date)
+set fish_greeting ''
+
 # Export statments
 
 # Add Python 3 to PATH
@@ -34,21 +37,27 @@ set --global --export PATH . $PATH
 
 # Command shortcuts
 abbr -a l ls -F
-abbr -a c cd
 abbr -a ll ls -lhF
-abbr -a la ls -a
+abbr -a la ls -ahF
+
+abbr -a c pushd
+abbr -a cd pushd
+abbr -a .. pushd ..
+abbr -a ... pushd ../..
+abbr -a .... pushd ../../..
+abbr -a ..... pushd ../../../..
+abbr -a ...... pushd ../../../../..
+abbr -a ....... pushd ../../../../../..
 
 # Path shortcuts
-abbr -a kat cd ~/Dropbox/Programming/Competitions/Kattis
-abbr -a drive cd ~/Google\ Drive/
-abbr -a euler cd ~/Dropbox/Programming/Project_Euler/WIP
-abbr -a uni cd ~/Dropbox/University/
-abbr -a drop cd ~/Dropbox
-abbr -a github cd ~/Desktop/GitHub
-abbr -a desk cd ~/Desktop
-abbr -a comp cd ~/Dropbox/Programming/Competitions
-
-
+abbr -a kat pushd ~/Dropbox/Programming/Competitions/Kattis
+abbr -a drive pushd ~/Google\ Drive/
+abbr -a euler pushd ~/Dropbox/Programming/Project_Euler/WIP
+abbr -a uni pushd ~/Dropbox/University/
+abbr -a drop pushd ~/Dropbox
+abbr -a github pushd ~/Desktop/GitHub
+abbr -a desk pushd ~/Desktop
+abbr -a comp pushd ~/Dropbox/Programming/Competitions
 
 
 

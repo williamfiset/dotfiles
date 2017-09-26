@@ -107,6 +107,7 @@ module.exports = {
     // bellSoundURL: 'http://example.com/bell.mp3',
 
     // for advanced config flags please refer to https://hyper.is/#cfg
+
   },
 
   // a list of plugins to fetch and install from npm
@@ -129,8 +130,11 @@ module.exports = {
     // Music
     'hyper-spotify',
 
-    // Git rocket
-    'gitrocket'
+    // Git rocket!
+    'gitrocket',
+    
+    // New tabs open in the same CWD
+    'hypercwd'
 
     // Themes:
     // 'hyperterm-atom-dark',
@@ -139,6 +143,8 @@ module.exports = {
     //'hyperline'
     //'hyperpower'
   ],
+
+  
 
   // Hyper tabs plugin config
   /* 
@@ -150,7 +156,6 @@ module.exports = {
     border: false,          // defaults to false
     trafficButtons: false,  // defaults to false
   },
-  */
 
   MaterialTheme: {
     // Set the theme variant, 
@@ -169,11 +174,13 @@ module.exports = {
     // NOTE: The backgroundOpacity should be between 0.1 and 0.9 to see the effect. 
     vibrancy: 'dark'
   },
+  */
 
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here
   // to load it and avoid it being `npm install`ed
   localPlugins: []
+
 };
 
 
