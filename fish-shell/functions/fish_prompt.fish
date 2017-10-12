@@ -82,3 +82,5 @@ function fish_prompt --description 'Sets the fish shell prompt'
   echo -n '$ '
 
 end
+
+
