@@ -1,0 +1,41 @@
+{
+  
+  // "color_scheme": "Packages/User/Nexus (SL) (Flake8Lint).tmTheme",
+  "color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
+  
+  "ignored_packages": [
+    "JavaIME",
+    "Vintage"
+  ],
+
+  "font_size": 22,
+  "tab_size": 2,
+  "highlight_line": true,
+  "spell_check": true, 
+
+  "ignored_words": [],
+  "translate_tabs_to_spaces": true,
+  "trim_trailing_white_space_on_save": false,
+  "word_wrap": false,
+
+  "draw_white_space": "selection", // all, none, selection
+
+  // this will display two vertical rulers at 80 and 120 character count
+  "rulers": [80, 100],
+
+  "caret_style": "phase",
+
+  // Block cursor (does not blick :/ )
+  // "caret_extra_width": 15,
+  // "caret_style": "solid",
+  // "wide_caret": true,
+
+  // Makes code fold buttons always visible.
+  "fade_fold_buttons": false,
+
+  // Bolds folder names.
+  "bold_folder_labels": true
+
+  // "font_options": ["gray_antialias"],
+
+}
