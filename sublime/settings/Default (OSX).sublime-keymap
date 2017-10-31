@@ -1,0 +1,21 @@
+[
+
+  {
+    "keys" : ["ctrl+tab"], 
+    "command" : "next_view"
+  },
+
+  { 
+    "keys": ["ctrl+shift+tab"],
+    "command": "prev_view"
+  },
+
+  // Skip over left brackets with tab
+  { "keys": ["tab"], "command": "move", "args": {"by": "characters", "forward": true}, "context":
+    [
+      { "key": "following_text", "operator": "regex_contains", "operand": "^[)}'\"\\]]", "match_all": true },
+      { "key": "auto_complete_visible", "operator": "equal", "operand": false }
+    ]
+  },
+
+]
