@@ -22,10 +22,7 @@ set tabstop=2
 set number
 set autoindent
 set relativenumber
-
-" Used for airline plugin
-"set laststatus=2
-"set ttimeoutlen=50
+set noswapfile
 
 command W w
 command Q q
