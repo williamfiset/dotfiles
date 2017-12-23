@@ -10,12 +10,22 @@ set nocompatible
 " Vim file type detection
 filetype off
 
+" Look in ~/.vim/colors for other color schemes
+colorscheme onedark "rupza
+"highlight Normal guibg=black guifg=white
+set background=dark
+"set termguicolors
+
 set expandtab
 set shiftwidth=2
 set tabstop=2
 set number
 set autoindent
 set relativenumber
+
+" Used for airline plugin
+"set laststatus=2
+"set ttimeoutlen=50
 
 command W w
 command Q q
@@ -50,7 +60,13 @@ call plug#begin('~/.vim/vim-plug-pluggins')
 
 Plug 'gmarik/vundle'
 Plug 'dag/vim-fish'
+"Plug 'itchyny/lightline.vim'
 "Plug 'terryma/vim-multiple-cursors'
+
+" Bottom status line 
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'airblade/vim-gitgutter'
 
 " Installs dark powered neo-completion (requires neovim to work!)
 if has('nvim')
