@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/home/william/Desktop/GitHub/kattis_problems/catenyms'
+let g:netrw_dirhist_2='/home/william/Desktop/GitHub/kattis_problems/comparinganswers'
+let g:netrw_dirhist_3='/home/william/.vim'
+let g:netrw_dirhist_4='/home/william/Dropbox/Programming/Competitions/Kattis/Big_Theta_Three_Practice_5/transportation'
+let g:netrw_dirhist_5='/home/william/Dropbox/Programming/Competitions/Kattis/Big_Theta_Three_Practice_5'
+let g:netrw_dirhist_6='/home/william/Dropbox/Programming/Competitions/Kattis/Big_Theta_Three_Practice_5/transportation'
+let g:netrw_dirhist_7='/home/william/.config/fish/functions'
+let g:netrw_dirhist_8='/home/william/.config/fish.bak'
