@@ -31,8 +31,6 @@ set --global --export CLASSPATH . $CLASSPATH
 # Added current path to $PATH
 set --global --export PATH . $PATH
 
-
-
 ### Abbreviations ###
 
 # Command shortcuts
@@ -60,7 +58,10 @@ abbr -a comp cd ~/Dropbox/Programming/Competitions
 abbr -a google https://www.google.com
 abbr -a facebook https://www.facebook.com
 
-
+# Make directory and cd into it
+function mkcd 
+  mkdir -p $argv; and cd $argv
+end
 
 
 
