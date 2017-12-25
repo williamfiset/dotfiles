@@ -124,6 +124,9 @@ module.exports = {
     // Displays a status bar with neat info
     'hyper-statusline',
 
+    // Makes cursor blink
+    'hyper-blink',
+
     // Pimps hyper tabs
     // 'hyper-tabs-enhanced',
 
@@ -182,7 +185,5 @@ module.exports = {
   localPlugins: []
 
 };
-
-
 
 
