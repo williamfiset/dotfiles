@@ -57,6 +57,8 @@ abbr -a drop cd ~/Dropbox
 abbr -a github cd ~/Desktop/GitHub
 abbr -a desk cd ~/Desktop
 abbr -a comp cd ~/Dropbox/Programming/Competitions
+abbr -a google https://www.google.com
+abbr -a facebook https://www.facebook.com
 
 
 
