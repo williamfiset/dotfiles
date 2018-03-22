@@ -1,5 +1,3 @@
-
-# set fish_greeting 'It is:' (date)
 set fish_greeting ''
 
 # Export statments
@@ -38,6 +36,11 @@ abbr -a l ls -F
 abbr -a ll ls -lhF
 abbr -a la ls -ahF
 
+# Git commands
+abbr -a gita git add -A
+abbr -a gitc git commit -m 
+abbr -a gitp git push
+
 abbr -a c cd
 abbr -a .. cd ..
 abbr -a ... cd ../..
@@ -55,16 +58,11 @@ abbr -a drop cd ~/Dropbox
 abbr -a github cd ~/Desktop/GitHub
 abbr -a desk cd ~/Desktop
 abbr -a comp cd ~/Dropbox/Programming/Competitions
-abbr -a google https://www.google.com
-abbr -a facebook https://www.facebook.com
 
 # Make directory and cd into it
 function mkcd 
   mkdir -p $argv; and cd $argv
 end
 
-
-
-
-
-
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/williamfiset/Downloads/google-cloud-sdk/path.fish.inc' ]; if type source > /dev/null; source '/Users/williamfiset/Downloads/google-cloud-sdk/path.fish.inc'; else; . '/Users/williamfiset/Downloads/google-cloud-sdk/path.fish.inc'; end; end

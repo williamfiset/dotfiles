@@ -1,11 +1,8 @@
 ## :fish: Fish shell configuration :fish:
 
-To install scripts run: 
-```
-fish install.fish
-```
-In the event you wish to revert all changes run:
-```
-fish revert.fish
-```
+To install first make a backup of your config files at ~/.config/fish
+Then I would recommend setting up a symbolic link to the fish-shell directory.
 
+```
+ln -s dotfiles/fish-shell ~/.config/fish
+```
