@@ -19,6 +19,6 @@ echo "Now to change the color scheme do: \n\tPreferences->Settings - More -> Syn
 echo "
 Then enter this code for which ever color scheme you wish:
 {
-	\"color_scheme\" : \"Packages/User/Neon.tmTheme\"
+	\"color_scheme\" : \"Packages/User/Aurora.tmTheme\"
 }
 "
