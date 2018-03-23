@@ -38,8 +38,10 @@ abbr -a la ls -ahF
 
 # Git commands
 abbr -a gita git add -A
+abbr -a gits git status
 abbr -a gitc git commit -m 
 abbr -a gitp git push
+abbr -a gitl "git log --oneline -n 10"
 
 abbr -a c cd
 abbr -a .. cd ..
