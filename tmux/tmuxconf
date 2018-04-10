@@ -1,0 +1,27 @@
+# Remap prefix key
+unbind-key C-b
+set -g prefix 'C-\'
+bind-key 'C-\' send-prefix
+
+# Map | and - to split panes
+bind | split-window -h
+bind - split-window -v
+
+# Remove escape key delay for vim
+set -sg escape-time 0
+
+# Vim style pane selection
+bind h select-pane -L
+bind j select-pane -D 
+bind k select-pane -U
+bind l select-pane -R
+
+# Set inactive/active window styles
+set -g window-style 'fg=colour247,bg=colour236'
+set -g window-active-style 'fg=colour250,bg=black'
+ 
+# Pane border
+set -g pane-border-bg colour235
+set -g pane-border-fg colour238
+set -g pane-active-border-bg colour236
+set -g pane-active-border-fg colour51

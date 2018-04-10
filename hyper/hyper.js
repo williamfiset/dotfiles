@@ -147,7 +147,12 @@ module.exports = {
     //'hyperpower'
   ],
 
-  
+
+  // https://github.com/zeit/hyperlinks
+  hyperlinks: {
+    clickAction: 'open',
+    defaultBrowser: true
+  },
 
   // Hyper tabs plugin config
   /* 
