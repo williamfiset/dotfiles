@@ -2,34 +2,21 @@ set fish_greeting ''
 
 # Export statments
 
-# Add Python 3 to PATH
-# set --global --export PATH /Library/Frameworks/Python.framework/Versions/3.5/bin/ $PATH
+# Adds '.' to $CLASSPATH if it's not already there.
+if not contains . $CLASSPATH
+  set -x CLASSPATH . $CLASSPATH
+end
 
-# MongoDB
-# set --global --export PATH /opt/mongodb/bin $PATH
-
-# Scala
-# set --global --export SCALA_HOME /opt/scala
-# set --global --export PATH $SCALA_HOME/bin $PATH
-
-# Maven
-# set --global --export PATH /opt/maven/bin/ $PATH
-
-# Hamcrest
-# set --global --export CLASSPATH /opt/hamcrest/hamcrest-junit-2.0.jar $CLASSPATH
-
-# JUnit
-# set --global --export JUNIT_HOME /opt/junit
-# set --global --export PATH $JUNIT_HOME $PATH
-# set --global --export CLASSPATH $JUNIT_HOME/junit-4.12.jar $CLASSPATH
-
-# Add . to Java classpath
-set --global --export CLASSPATH . $CLASSPATH
-
-# Added current path to $PATH
-set --global --export PATH . $PATH
+# Adds '.' to $PATH if it's not already there.
+if not contains . $CLASSPATH
+  set -x PATH . $PATH
+end
 
 ### Abbreviations ###
+
+# Use this abbreviation instead of $CLASSPATH variable
+abbr -a java java -cp . 
+abbr -a javac javac -cp .
 
 # Command shortcuts
 abbr -a l ls -F
