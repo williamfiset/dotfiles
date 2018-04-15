@@ -8,15 +8,11 @@ if not contains . $CLASSPATH
 end
 
 # Adds '.' to $PATH if it's not already there.
-if not contains . $CLASSPATH
+if not contains . $PATH
   set -x PATH . $PATH
 end
 
 ### Abbreviations ###
-
-# Use this abbreviation instead of $CLASSPATH variable
-abbr -a java java -cp . 
-abbr -a javac javac -cp .
 
 # Command shortcuts
 abbr -a l ls -F
