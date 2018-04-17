@@ -1,3 +1,5 @@
+set -g default-terminal "screen-256color"
+
 # Remap prefix key
 unbind-key C-b
 set -g prefix 'C-\'
@@ -19,7 +21,7 @@ bind -n WheelDownPane select-pane -t= \; send-keys -M
 set-window-option -g mode-keys vi
 
 # Allows copying selected text with 'y'
-bind -T copy-mode-vi y send -X copy-pipe "xclip -in -selection clipboard"
+bind -T copy-mode-vi y send -X copy-pipe "pbcopy"
 
 # https://medium.freecodecamp.org/tmux-in-practice-scrollback-buffer-47d5ffa71c93
 # Do not copy selection and cancel copy mode on drag end event
