@@ -7,21 +7,48 @@ bind-key 'C-\' send-prefix
 bind | split-window -h
 bind - split-window -v
 
+# Allow scrolling with mouse
+set-option -g mouse on
+
+# Make scrolling with wheels work
+# https://stackoverflow.com/questions/11832199/tmux-set-g-mouse-mode-on-doesnt-work
+bind -n WheelUpPane if-shell -F -t = "#{mouse_any_flag}" "send-keys -M" "if -Ft= '#{pane_in_mode}' 'send-keys -M' 'select-pane -t=; copy-mode -e; send-keys -M'"
+bind -n WheelDownPane select-pane -t= \; send-keys -M
+
+# Enable vi keys in tmux
+set-window-option -g mode-keys vi
+
+# Allows copying selected text with 'y'
+bind -T copy-mode-vi y send -X copy-pipe "xclip -in -selection clipboard"
+
+# https://medium.freecodecamp.org/tmux-in-practice-scrollback-buffer-47d5ffa71c93
+# Do not copy selection and cancel copy mode on drag end event
+# Prefer iTerm style selection: select, then mouse click to copy to buffer
+#unbind -T copy-mode-vi MouseDragEnd1Pane
+#bind -T copy-mode-vi MouseDown1Pane select-pane \;\
+#  send-keys -X copy-pipe "xclip -selection clipboard" \;\
+#  send-keys -X clear-selection
+
+# Tmux session is always open so limit history
+set-option -g history-limit 10000
+
 # Remove escape key delay for vim
 set -sg escape-time 0
 
 # Vim style pane selection
 bind h select-pane -L
-bind j select-pane -D 
+bind j select-pane -D
 bind k select-pane -U
 bind l select-pane -R
 
+# Colors:
+# https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg
 # Set inactive/active window styles
-set -g window-style 'fg=colour247,bg=colour236'
+set -g window-style 'fg=colour247,bg=colour234'
 set -g window-active-style 'fg=colour250,bg=black'
- 
+
 # Pane border
-set -g pane-border-bg colour235
-set -g pane-border-fg colour238
+set -g pane-border-bg colour238
+set -g pane-border-fg colour235
 set -g pane-active-border-bg colour236
 set -g pane-active-border-fg colour51
