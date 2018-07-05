@@ -15,17 +15,17 @@ set-option -g mouse on
 # Enable vi keys in tmux
 set-window-option -g mode-keys vi
 
+# Allows copying selected text with 'y' and visual mode with 'v'
+# once in copy mode. Copy mode is triggered by mouse scroll or <prefix>-[
+bind-key -T copy-mode-vi v send-keys -X begin-selection
+bind-key -T copy-mode-vi y send-keys -X copy-selection
+
 # http://www.rushiagr.com/blog/2016/06/16/everything-you-need-to-know-about-tmux-copy-pasting/
 # Prevents jump to bottom after mouse copy (vi side-effect) by staying in copy mode, however, it seems 
 # to mess with the ability to copy to clipboard (with ctrl-c, but yanking with 'y' works). In iTerm2
 # with clipboard settings enabled you can hold option (alt) to avoid going down when re-clicking and
 # disable this setting.
 unbind -T copy-mode-vi MouseDragEnd1Pane
-
-# Allows copying selected text with 'y'
-# bind -T copy-mode-vi y send -X copy-pipe "pbcopy"
-bind-key -T copy-mode-vi v send-keys -X begin-selection
-bind-key -T copy-mode-vi y send-keys -X copy-selection
 
 # Tmux session is always open so limit history
 set-option -g history-limit 10000
