@@ -1,6 +1,6 @@
 set -g default-terminal "screen-256color"
 
-# Remap prefix key
+# Remap prefix key to ctrl-\ instead of ctrl-b
 unbind-key C-b
 set -g prefix 'C-\'
 bind-key 'C-\' send-prefix
@@ -14,14 +14,24 @@ set-option -g mouse on
 
 # Make scrolling with wheels work
 # https://stackoverflow.com/questions/11832199/tmux-set-g-mouse-mode-on-doesnt-work
-bind -n WheelUpPane if-shell -F -t = "#{mouse_any_flag}" "send-keys -M" "if -Ft= '#{pane_in_mode}' 'send-keys -M' 'select-pane -t=; copy-mode -e; send-keys -M'"
-bind -n WheelDownPane select-pane -t= \; send-keys -M
+#bind -n WheelUpPane if-shell -F -t = "#{mouse_any_flag}" "send-keys -M" "if -Ft= '#{pane_in_mode}' 'send-keys -M' 'select-pane -t=; copy-mode -e; send-keys -M'"
+#bind -n WheelDownPane select-pane -t= \; send-keys -M
 
 # Enable vi keys in tmux
 set-window-option -g mode-keys vi
 
+# http://www.rushiagr.com/blog/2016/06/16/everything-you-need-to-know-about-tmux-copy-pasting/
+# Prevents jump to bottom after mouse copy (vi side-effect) by staying in copy mode,  however, it seems 
+# to mess with the ability to copy to clipboard (with ctrl-c, but yanking with 'y' works?). In iTerm2
+# with clipboard settings enabled you can hold option (alt) to avoid going down when re-clicking and
+# disable this setting.
+unbind -T copy-mode-vi MouseDragEnd1Pane
+
 # Allows copying selected text with 'y'
-bind -T copy-mode-vi y send -X copy-pipe "pbcopy"
+# bind -T copy-mode-vi y send -X copy-pipe "pbcopy"
+bind-key -T copy-mode-vi v send-keys -X begin-selection
+bind-key -T copy-mode-vi y send-keys -X copy-selection
+bind-key -T copy-mode-vi r send-keys -X rectangle-toggle
 
 # https://medium.freecodecamp.org/tmux-in-practice-scrollback-buffer-47d5ffa71c93
 # Do not copy selection and cancel copy mode on drag end event

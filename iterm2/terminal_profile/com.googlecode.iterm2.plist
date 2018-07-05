@@ -5,7 +5,7 @@
 	<key>AdjustWindowForFontSizeChange</key>
 	<true/>
 	<key>AllowClipboardAccess</key>
-	<false/>
+	<true/>
 	<key>AlternateMouseScroll</key>
 	<true/>
 	<key>AnimateDimming</key>
@@ -792,11 +792,11 @@
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>213 358 599 388 0 0 1920 1058 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>951 296 918 512 0 0 1920 1058 </string>
+	<string>951 335 796 473 0 0 1920 1058 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>962 0 955 1058 0 0 1920 1058 </string>
-	<key>NSWindow Frame iTerm Window 1</key>
 	<string>0 0 1920 1058 0 0 1920 1058 </string>
+	<key>NSWindow Frame iTerm Window 1</key>
+	<string>962 0 1060 1058 0 0 1920 1058 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>865 420 730 477 0 0 1920 1057 </string>
 	<key>New Bookmarks</key>
@@ -1558,6 +1558,10 @@
 	<string>0F481663-6663-4FA0-9997-45CE0662DD6B</string>
 	<key>NoSyncLastTipTime</key>
 	<real>487339978.96062499</real>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
+	<true/>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
+	<integer>0</integer>
 	<key>NoSyncPermissionToShowTip</key>
 	<true/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
@@ -1643,7 +1647,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-04-18T00:56:55Z</date>
+	<date>2018-07-04T05:24:21Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShowBookmarkName</key>
@@ -1687,7 +1691,7 @@
 	<key>WordCharacters</key>
 	<string>/-+\~_.</string>
 	<key>iTerm Version</key>
-	<string>3.1.5</string>
+	<string>3.1.6</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
