@@ -21,3 +21,11 @@ $ switchaudiosource -s "LG UltraFine Display Audio"
 # However the output source doesn't persist for some reason between startups
 # so one option is to setup a startup script:
 https://superuser.com/questions/229773/run-command-on-startup-login-mac-os-x
+
+
+# Or set a startup script to set the sound to output from the monitor instead of Mac Mini:
+
+sudo cp /location/of/monitor.startup.script.plist /Library/LaunchAgents/monitor.startup.script.plist
+sudo chown root:wheel /Library/LaunchAgents/monitor.startup.script.plist
+sudo chmod o-w /Library/LaunchAgents/monitor.startup.script.plist
+sudo launchctl load /Library/LaunchAgents/monitor.startup.script.plist
