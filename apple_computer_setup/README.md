@@ -12,7 +12,8 @@ defaults write -g KeyRepeat -int 2
 ```
 
 # Configure sound to come out of monitor
-# https://soundmacguy.wordpress.com/2017/11/08/setting-the-default-sound-device-automatically-switchaudiosoruce
+
+https://soundmacguy.wordpress.com/2017/11/08/setting-the-default-sound-device-automatically-switchaudiosoruce
 
 ```
 brew install switchaudio-osx
@@ -25,10 +26,6 @@ Mac mini Speakers (output)
 ```
 switchaudiosource -s "LG UltraFine Display Audio"
 ```
-
-# However 
-https://superuser.com/questions/229773/run-command-on-startup-login-mac-os-x
-
 # Monitor sound script
 
 The sound output source doesn't persist for some reason between startups
