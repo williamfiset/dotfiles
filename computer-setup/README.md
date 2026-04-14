@@ -13,7 +13,7 @@ Steps and software for setting up a new Mac.
 
   One thing I like to configure is **cycling between window sizes** on a single shortcut. For example, pressing `Ctrl+Cmd+←` cycles the focused window through 1/2, 2/3, and 1/3 of the screen width on the left side — tap it repeatedly to step through sizes without lifting your hands.
 
-  ![Rectangle cycling between window sizes](imgs/rectangle_cycling.png)
+  <img src="imgs/rectangle_cycling.png" width="500" alt="Rectangle cycling between window sizes">
 
   Rectangle Pro supports this natively via its cycle actions. You can also set up custom window dimensions beyond the built-in presets — [this blog post](https://medium.com/ryan-hanson/custom-window-dimension-shortcuts-in-macos-e7df347dfd24) is where I discovered how to do that.
 - **[RCMD](https://lowtechguys.com/rcmd/)** — app switcher using the right `Cmd` key + a letter to jump directly to any running app. Much faster than Spotlight (`Cmd+Space`) which requires typing the app name and doesn't have dedicated key mappings.
