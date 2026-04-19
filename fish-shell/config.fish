@@ -15,7 +15,7 @@ abbr -a .... cd ../../..
 abbr -a ..... cd ../../../..
 
 # Path shortcuts
-abbr -a drive cd ~/Google\ Drive/My\ Drive
+abbr -a drive cd "/Users/william/Library/CloudStorage/GoogleDrive-fisetwill@gmail.com/My Drive"
 abbr -a github cd ~/Desktop/GitHub
 abbr -a desk cd ~/Desktop
 
