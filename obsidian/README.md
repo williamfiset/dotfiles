@@ -10,7 +10,10 @@ Install via Settings > Community Plugins > Browse.
 
 ### Style Settings
 
-Used to customize theme behavior. After installing, go to Settings > Style Settings > Shimmering Focus and turn **line numbers off**.
+Used to customize theme and other style settings. After installing:
+
+* Go to Settings > Style Settings > Shimmering Focus and turn **line numbers off**.
+* Also make sure to set Shimmering Focus > Media > Image Size (Percent) to 100% instead of 50% to make images fully expand in the notebook
 
 ### Image Converter
 
