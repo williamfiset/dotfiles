@@ -1,0 +1,62 @@
+#!/bin/sh
+# tcd.sh — Short for Tmux change panes: cd all current tmux panes to the same directory.
+#
+# Usage:
+#   tcd.sh [DIR]           cd panes in the CURRENT window (default: $PWD)
+#   tcd.sh -s [DIR]        the whole current session
+#   tcd.sh -a [DIR]        all panes in all sessions
+#   tcd.sh -f [DIR]        force: send to every pane, even non-shell ones
+#
+# Only panes currently at a shell prompt get the cd, unless -f is given.
+
+set -eu
+
+scope=""            # default: current window
+force=0
+
+while [ $# -gt 0 ]; do
+  case "$1" in
+    -s) scope="-s"; shift ;;   # whole current session
+    -a) scope="-a"; shift ;;
+    -f) force=1;   shift ;;
+    -h|--help) sed -n '2,12p' "$0"; exit 0 ;;
+    -*) echo "unknown flag: $1" >&2; exit 2 ;;
+    *)  break ;;
+  esac
+done
+
+[ -n "${TMUX:-}" ] || { echo "not inside a tmux session" >&2; exit 1; }
+
+dir="${1:-$PWD}"
+case "$dir" in
+  /*) : ;;                          # absolute, fine
+  *)  dir="$(cd "$dir" && pwd)" ;;  # resolve relative to absolute
+esac
+[ -d "$dir" ] || { echo "not a directory: $dir" >&2; exit 1; }
+
+# Panes not at a shell will receive C-c first to clear any partial input.
+shells="bash zsh fish sh ksh dash"
+
+# With no scope flag, list-panes targets the current window (the default).
+if [ -n "$scope" ]; then
+  set -- list-panes "$scope"
+else
+  set -- list-panes
+fi
+
+tmux "$@" -F '#{pane_id} #{pane_current_command}' | while read -r pid cmd; do
+  if [ "$force" -eq 1 ]; then
+    tmux send-keys -t "$pid" " cd '$dir'" Enter
+    continue
+  fi
+  is_shell=0
+  for s in $shells; do
+    [ "$cmd" = "$s" ] && is_shell=1 && break
+  done
+  if [ "$is_shell" -eq 1 ]; then
+    # leading space keeps it out of history if HISTCONTROL=ignorespace
+    tmux send-keys -t "$pid" " cd '$dir'" Enter
+  else
+    echo "skipped $pid (running: $cmd)"
+  fi
+done
