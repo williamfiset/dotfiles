@@ -1,0 +1,13 @@
+font-family = JetBrains Mono
+font-size = 14
+cursor-style = block
+shell-integration-features = no-cursor,sudo,title,ssh-env,ssh-terminfo
+theme = 0x96f
+
+# The default is false, but neat setting
+mouse-hide-while-typing = false
+
+# Disables various ligatures (e.g showing compressed "..." in terminal)
+font-feature = -calt
+font-feature = -liga
+font-feature = -dlig
