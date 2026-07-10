@@ -11,3 +11,6 @@ mouse-hide-while-typing = false
 font-feature = -calt
 font-feature = -liga
 font-feature = -dlig
+
+# Allows computer to shut down without ghosty prompting 'Are you sure you want to close Ghostty?'...
+confirm-close-surface=false
