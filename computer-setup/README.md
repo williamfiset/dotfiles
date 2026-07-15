@@ -31,7 +31,9 @@ Steps and software for setting up a new Mac.
 
   #### Recording Cleanup
 
-  OpenSuperWhisper keeps every recording indefinitely in `~/Library/Application Support/ru.starmel.OpenSuperWhisper/recordings/` — there's no built-in retention setting. [`opensuperwhisper-cleanup.sh`](opensuperwhisper-cleanup.sh) deletes recordings older than 4 days. Set it up as a daily cron job:
+  OpenSuperWhisper keeps every recording indefinitely in `~/Library/Application Support/ru.starmel.OpenSuperWhisper/recordings/` — there's no built-in retention setting yet. **This is already fixed upstream** ([PR #172](https://github.com/Starmel/OpenSuperWhisper/pull/172), merged 2026-07-06, closes [#164](https://github.com/Starmel/OpenSuperWhisper/issues/164)) with a built-in auto-delete-after-X-days preference — it just hasn't shipped in a tagged release yet (latest release is still `0.1.0` from 2026-03-03). Once that release ships and you upgrade via `brew upgrade --cask opensuperwhisper`, this cron job can be removed.
+
+  Until then, [`opensuperwhisper-cleanup.sh`](opensuperwhisper-cleanup.sh) deletes recordings older than 4 days. Set it up as a daily cron job:
 
   ```
   crontab -e
