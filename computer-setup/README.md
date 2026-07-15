@@ -29,6 +29,20 @@ Steps and software for setting up a new Mac.
 
   > Quick notes from today: standup is at 9:30, and I need to send 3 replies before 5:00. We shipped v2.4 to 128 users, the error rate dropped to 0.5%, and I closed 47 of 52 tickets. Budget is $1,200 through Q3 2025. Reach me at 555-0142 - I'm 2nd on the list.
 
+  #### Recording Cleanup
+
+  OpenSuperWhisper keeps every recording indefinitely in `~/Library/Application Support/ru.starmel.OpenSuperWhisper/recordings/` — there's no built-in retention setting. [`opensuperwhisper-cleanup.sh`](opensuperwhisper-cleanup.sh) deletes recordings older than 4 days. Set it up as a daily cron job:
+
+  ```
+  crontab -e
+  ```
+
+  ```
+  0 14 * * * /Users/william/Desktop/github/dotfiles/computer-setup/opensuperwhisper-cleanup.sh >> /tmp/opensuperwhisper-cleanup.log 2>&1
+  ```
+
+  **Requires Full Disk Access.** `cron` is blocked by macOS from touching `~/Library/Application Support/...` by default — the job will silently fail with `Operation not permitted` in the log until you grant it access: **System Settings → Privacy & Security → Full Disk Access** → add `/usr/sbin/cron` (press `Cmd+Shift+G` in the file picker to type the path directly).
+
 ## macOS System Settings
 
 - **Keyboard repeat rate** — set to fastest repeat, shortest delay (System Settings > Keyboard).
