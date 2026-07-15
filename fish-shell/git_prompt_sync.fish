@@ -15,22 +15,15 @@
 # untrapped SIGUSR1 is to terminate the process, and this killed an
 # unrelated nested fish job during testing.
 
-status is-interactive; or exit
-
 set -g __git_state_watch_pattern '^\s*(command\s+)?git\s+(add|commit|checkout|switch|push|pull|fetch|merge|rebase|stash|branch|reset)\b'
 set -g __git_state_pid_dir "$HOME/.cache/fish/git_prompt_sync"
 mkdir -p $__git_state_pid_dir 2>/dev/null
 
-touch "$__git_state_pid_dir/$fish_pid" 2>/dev/null
-
-function __git_state_unregister --on-event fish_exit
-    rm -f "$__git_state_pid_dir/$fish_pid" 2>/dev/null
-end
-
-function __git_state_repaint --on-signal SIGUSR1
-    commandline -f repaint
-end
-
+# Broadcasting is safe from any shell, interactive or not -- it only sends
+# signals, it doesn't require a trap to be installed locally. So this stays
+# active even for one-shot, non-interactive `fish -c` invocations (scripts,
+# tool calls, etc.), which is what lets e.g. a commit made through a script
+# or tool still refresh the prompt in your real interactive panes.
 function __git_state_broadcast --on-event fish_postexec
     string match -qr $__git_state_watch_pattern -- $argv[1]; or return
     for entry in $__git_state_pid_dir/*
@@ -42,4 +35,23 @@ function __git_state_broadcast --on-event fish_postexec
             rm -f $entry 2>/dev/null
         end
     end
+end
+
+# Registering as a *receiver*, on the other hand, is only safe for
+# long-lived interactive sessions. It opens a window (between registering
+# the PID and installing the SIGUSR1 trap, and again during teardown)
+# where an untrapped SIGUSR1 would kill the process outright. Interactive
+# panes only open that window once at startup; non-interactive one-shot
+# invocations would open and close it constantly, turning a rare race into
+# a routine one. So only interactive shells register below.
+status is-interactive; or exit
+
+touch "$__git_state_pid_dir/$fish_pid" 2>/dev/null
+
+function __git_state_unregister --on-event fish_exit
+    rm -f "$__git_state_pid_dir/$fish_pid" 2>/dev/null
+end
+
+function __git_state_repaint --on-signal SIGUSR1
+    commandline -f repaint
 end
