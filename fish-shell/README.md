@@ -12,3 +12,15 @@ This opens a browser-based interface where you can interactively change themes, 
 Preferred settings:
 - **Theme**: ayu Mirage
 - **Prompt**: Informative Vcs
+
+## git_prompt_sync
+
+Keeps the git segment of the fish prompt in sync across every open fish session (e.g. multiple herdr panes) whenever a git command that changes repo state runs in any one of them.
+
+To install, copy it into fish's `conf.d` so it's autoloaded on shell startup:
+
+```
+cp git_prompt_sync.fish ~/.config/fish/conf.d/git_prompt_sync.fish
+```
+
+It takes effect in new fish sessions (or run `source ~/.config/fish/conf.d/git_prompt_sync.fish` in existing ones).
