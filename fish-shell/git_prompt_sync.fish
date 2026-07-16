@@ -29,7 +29,7 @@
 
 status is-interactive; or exit
 
-set -g __git_state_watch_pattern '^\s*(command\s+)?git\s+(add|commit|checkout|switch|push|pull|fetch|merge|rebase|stash|branch|reset)\b'
+set -g __git_state_watch_pattern '^\s*(command\s+)?git\s+(add|commit|checkout|switch|push|pull|fetch|merge|rebase|stash|branch|reset|rm|mv|clean)\b'
 set -g __git_state_pid_dir "$HOME/.cache/fish/git_prompt_sync"
 mkdir -p $__git_state_pid_dir 2>/dev/null
 
