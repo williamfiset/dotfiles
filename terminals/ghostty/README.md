@@ -1,3 +1,8 @@
+# Ghostty
+
+Configuration for [Ghostty](https://ghostty.org), a fast, native terminal
+emulator.
+
 ## Themes
 
 List the available built-in themes and preview them right in the terminal:
