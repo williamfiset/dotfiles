@@ -13,7 +13,7 @@ The tmux config uses `ctrl + arrow keys` for pane selection (without prefix). On
 
 ### tcd
 
-`bin/tcd` changes the working directory of multiple tmux panes at once. Symlink or copy it onto your `$PATH` (e.g. `~/.local/bin`) to use it.
+`terminal-multiplexers/tmux/bin/tcd` changes the working directory of multiple tmux panes at once. Symlink or copy it onto your `$PATH` (e.g. `~/.local/bin`) to use it.
 
 ```
 tcd [DIR]           cd panes in the CURRENT window (default: $PWD)

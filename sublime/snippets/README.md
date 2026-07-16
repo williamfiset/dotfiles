@@ -2,7 +2,7 @@
 Usage
 =====
 
-1) Run the installSnippets script and reload sublime and start using the snippets in this repo! 
+1) Run the `sublime/snippets/installSnippets` script and reload sublime and start using the snippets in this repo! 
 NOTE: the installSnippets script will not work if sublime is not installed in it's default location.
 
 Snippet Guidelines:

@@ -21,7 +21,7 @@ prompt.
 
 ```
 mkdir -p ~/.config/git/hooks
-cp git_prompt_broadcast dispatch post-* reference-transaction ~/.config/git/hooks/
+cp git-hooks/git_prompt_broadcast git-hooks/dispatch git-hooks/post-* git-hooks/reference-transaction ~/.config/git/hooks/
 chmod +x ~/.config/git/hooks/*
 git config --global core.hooksPath ~/.config/git/hooks
 ```
