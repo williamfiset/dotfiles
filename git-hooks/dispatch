@@ -1,0 +1,46 @@
+#!/bin/sh
+# Shared dispatcher for the global git hooks in this directory.
+#
+# Because core.hooksPath overrides a repo's own .git/hooks entirely, each
+# global hook first chains to the repo-local hook of the same name (so
+# per-repo hooks and tools like husky keep working), then triggers the
+# fish prompt broadcast.
+#
+# Usage: dispatch <hook-name> [hook args...]
+
+hook="$1"
+shift
+
+# Hard recursion guard. Hooks inherit git config (including core.hooksPath)
+# through the environment, so a git command run from inside a hook can fire
+# these global hooks again. One nested level is where it stops.
+if [ -n "$GIT_PROMPT_SYNC_DISPATCH" ]; then
+    exit 0
+fi
+GIT_PROMPT_SYNC_DISPATCH=1
+export GIT_PROMPT_SYNC_DISPATCH
+
+# Resolve the repo's own hooks dir via --git-dir. Do NOT use
+# `git rev-parse --git-path hooks`: it respects core.hooksPath, which
+# resolves right back to THIS directory and made dispatch exec itself in
+# an infinite fork loop.
+git_dir=$(git rev-parse --git-dir 2>/dev/null)
+
+status=0
+if [ -n "$git_dir" ]; then
+    local_hook="$git_dir/hooks/$hook"
+    if [ -x "$local_hook" ]; then
+        "$local_hook" "$@"
+        status=$?
+    fi
+fi
+
+# reference-transaction fires for prepared/committed/aborted states on every
+# ref update in every repo operation; only a completed transaction is worth
+# a repaint.
+if [ "$hook" = "reference-transaction" ] && [ "$1" != "committed" ]; then
+    exit "$status"
+fi
+
+"$HOME/.config/git/hooks/git_prompt_broadcast"
+exit "$status"

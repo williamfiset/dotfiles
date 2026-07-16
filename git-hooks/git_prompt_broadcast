@@ -1,0 +1,24 @@
+#!/bin/sh
+# Signal every registered interactive fish session to repaint its prompt.
+#
+# Companion to ~/.config/fish/conf.d/git_prompt_sync.fish: interactive fish
+# sessions drop a PID file in the directory below and trap SIGUSR1 to run
+# `commandline -f repaint`. This script is plain sh (not fish) so git hooks
+# can invoke it cheaply no matter what shell or tool ran the git command.
+#
+# Only PIDs that registered themselves are ever signaled, and only after
+# re-confirming the PID is still a live fish process -- an untrapped SIGUSR1
+# terminates fish, so blind pgrep-based broadcasting is not safe.
+
+dir="$HOME/.cache/fish/git_prompt_sync"
+[ -d "$dir" ] || exit 0
+
+for entry in "$dir"/*; do
+    [ -e "$entry" ] || continue
+    pid=$(basename "$entry")
+    case "$(ps -p "$pid" -o comm= 2>/dev/null)" in
+        *fish) kill -USR1 "$pid" 2>/dev/null ;;
+        *) rm -f "$entry" ;;
+    esac
+done
+exit 0

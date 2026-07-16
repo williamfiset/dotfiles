@@ -24,3 +24,5 @@ cp git_prompt_sync.fish ~/.config/fish/conf.d/git_prompt_sync.fish
 ```
 
 It takes effect in new fish sessions (or run `source ~/.config/fish/conf.d/git_prompt_sync.fish` in existing ones).
+
+This covers git commands typed into interactive fish sessions. To also refresh prompts when git runs from scripts, editors, agents, or other shells, install the companion global git hooks — see [`git-hooks/README.md`](../git-hooks/README.md).
