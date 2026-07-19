@@ -6,7 +6,7 @@ Config for [herdr](https://herdr.dev) (terminal multiplexer / agent manager).
 
 ```
 mkdir -p ~/.config/herdr
-cp config.toml ~/.config/herdr/config.toml
+cp terminal-multiplexers/herdr/config.toml ~/.config/herdr/config.toml
 ```
 
 Reload with `prefix+shift+r` in a running session.
